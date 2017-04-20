@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+/* */
+/* updated on 2017-03-30*/
+/**/
+
+aside,
+main,
+main > header,
+main > article {
+  display: flex;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  background-color: $color-body-background;
+}
+
+/**
+* mrak of aside's toggle
+*/
+body.off-aside {
+  main {
+    padding: 0;
+  }
+  aside {
+    display: none;
+  }
+  header {
+    button.toggle-helper,
+    button.toggle-aside {
+      display: block;
+
+      visibility: visible;
+    }
+    button.toggle-helper {
+      visibility: hidden;
+    }
+  }
+}
+
+/**
+* aside component
+*/
+aside {
+  position: fixed;
+
+  flex-flow: column;
+
+  width: 280px;
+  height: 100%;
+  background-color: white;
+
+  z-index: 200;
+
+  div.card-user {
+    display: flex;
+    flex: none;
+    flex-flow: column;
+
+    padding: 3rem 0 1rem 0;
+    background-color: $color-card;
+
+    & > a {
+      width: 100px;
+      margin: 0 auto 1rem auto;
+      border-radius: 50%;
+
+      img.avatar {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    li {
+      width: 30%;
+
+      color: white;
+      text-align: center;
+      span:last-child {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  div.route-app {
+    padding: 1rem 0;
+    li > a {
+      padding: 0 .5rem;
+    }
+  }
+  div.route-page {
+    padding: 1rem 0;
+
+    overflow: auto;
+    div.route-nav {
+      padding: 0 .5rem;
+      li {
+        margin: 0 .5rem;
+
+        color: $color-deep;
+        &:first-child {
+          font-size: 1.4rem;
+        }
+        &:last-child {
+          color: currentColor;
+        }
+      }
+    }
+  }
+  div.route-list {
+    padding: .5rem 0;
+
+    line-height: 3;
+  }
+
+  @include _media( "lg" ){
+    display: none;
+  }
+  @include _media( "md" ){
+  }
+  @include _media( "sm" ){
+  }
+  @include _media( "xs" ){
+  }
+}
+
+
+
+/**
+* main component
+*/
+main {
+  flex: auto;
+  flex-flow: column;
+
+  min-height: 100%;
+  padding-left: 280px;
+
+  & > header div.tool,
+  & > article {
+    flex: 0 1 auto;
+
+    width: 1008px;
+    margin: 0 auto;
+  }
+  & > header {
+    flex: none;
+
+    justify-content: space-between;
+
+    background-color: white;
+    form > div.dropdown {
+      margin: 1rem 0;
+    }
+    button.toggle-aside,
+    button.toggle-helper {
+      display: none;
+
+      margin: 1rem;
+
+      line-height: 1rem;
+
+      visibility: hidden;
+    }
+    button.toggle-helper {
+      visibility: hidden;
+    }
+  }
+  & > article {
+    flex-flow: row wrap;
+
+    justify-content: space-between;
+  }
+
+  @include _media( "lg" ){
+    & {
+      padding-left: 0;
+      & > header {
+        button.toggle-aside {
+          display: block;
+
+          visibility: visible;
+        }
+        div.tool {
+          width: 100%;
+          min-width: unset;
+        }
+      }
+      & > article {
+        width: 96%;
+        min-width: 960px;
+        max-width: 1008px;
+      }
+    }
+  }
+  @include _media( "md" ){
+    & > article {
+      width: 60%;
+      min-width: 656px;
+      max-width: 800px;
+    }
+  }
+  @include _media( "sm" ){
+    & > article {
+      flex-flow: column nowrap;
+
+      width: 66%;
+      min-width: 360px;
+      max-width: 656px;
+    }
+  }
+  @include _media( "xs" ){
+    & > article {
+      width: 92%;
+      min-width: 330px;
+      max-width: 360px;
+    }
+  }
+}

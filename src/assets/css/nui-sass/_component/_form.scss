@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+/* */
+/* updated on 2017-03-30*/
+/**/
+
+button {
+  min-width: 5.2rem;
+  padding: 0 1rem;
+  margin: 1rem;
+  background-color: white;
+
+  cursor: pointer;
+}
+
+form {
+  div.input-group {
+    display: flex;
+
+    padding: 0 1rem;
+    margin-top: .5rem;
+
+    > span.lamp {
+      flex: none;
+
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: .74rem;
+      background-color: $color-light;
+      ~ input,
+      ~ textarea {
+        margin-left: 1rem;
+      }
+    }
+    > input[type = "text"],
+    > input[type = "password"],
+    > textarea {
+      flex: auto;
+
+      width: 100%;
+    }
+
+    label {
+      position: relative;
+      margin-left: 1rem;
+      
+      color: $color-deep;
+      cursor: pointer;
+    }
+    
+    // hide the input
+    input[type = "raido"],
+    input[type = "checkbox"],
+    input[type = "file"] {
+      position: absolute;
+
+      width: 0.1px; 
+      height: 0.1px;
+
+      opacity: 0; 
+      overflow: hidden;
+       
+      z-index: -1;
+    }
+
+    input[type = "radio"],
+    input[type = "checkbox"] {
+
+      ~ label[for] {
+        padding-left: 1.5rem;
+
+        &::before {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+
+          width: .8rem;
+          height: .8rem;
+          border: 2px currentcolor solid;
+          margin: auto;
+
+          color: $color-light;
+
+          content: "";
+        }
+      }
+
+      &:checked {
+        + label[for] {
+          color: currentcolor;
+          &::before {
+            border: none;
+          }
+          &::after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+
+            width: .8rem;
+            height: .8rem;
+            margin: auto;
+            background-color: currentColor;
+
+            color: $color-deep;
+
+            content: "";
+          }
+        }
+      }
+    }
+    input[type = "radio"] {
+      + label[for] {
+        &::before,
+        &::after {
+          border-radius: 50%;
+        }
+      }
+    }
+
+    input[type = "file"] {
+
+      ~ label[for] {
+
+      }
+
+    }
+  }
+
+  div.dropdown {
+    position: relative;
+
+    display: inline-flex;
+    > button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin: 0;
+
+      color: $color-deep;
+      + ul.menu {
+        position: absolute;
+        top: 0;
+
+        display: none;
+
+        width: 100%;
+        background-color: white;
+
+        z-index: 100;
+      }
+    }
+  }
+}

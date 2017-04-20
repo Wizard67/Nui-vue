@@ -1,0 +1,182 @@
+@charset "UTF-8";
+
+/* */
+/* updated on 2017-03-30*/
+/**/
+
+/**
+* panel-work component
+*/
+div.panel-works {
+  width: 312px;
+
+  @include _media( "sm" ){
+    & {
+      width: unset;
+    }
+  }
+}
+
+/**
+* panel-sharing component
+*/
+div.panel-sharing {
+  li.cover {
+    flex: none;
+  }
+  li.detail {
+    flex: 1 1 auto;
+    
+    padding: 1rem 0 .5rem 0;
+    div.content {
+      height: 7rem;
+
+      overflow: hidden;
+    }
+  }
+
+  @include _media( "lg" ){
+  }
+  @include _media( "md" ){
+    & li.detail {
+      li.users {
+        margin-bottom: .3rem;
+      }
+      ul.flex-between {
+        justify-content: flex-end;
+
+        flex-wrap: wrap;
+      }
+    }
+  }
+  @include _media( "sm" ){
+    & {
+        flex: none;
+      & > ul.flex-between {
+        justify-content: space-between;
+
+        flex-wrap: wrap;
+      }
+      li.cover {
+        flex: 1;
+      }
+    }
+  }
+  @include _media( "xs" ){
+  }
+}
+
+/**
+* panel-activitie component
+*/
+div.panel-activitie {
+  overflow: hidden;
+
+  @include _media( "lg" ){
+  }
+  @include _media( "md" ){
+    & > img.cover {
+      width: unset;
+      height: 210px;
+      margin-left: -140px;
+    }
+  }
+  @include _media( "sm" ){
+    & {
+      flex: none;
+      & > ul.flex-between {
+        flex-direction: column;
+
+        flex-wrap: wrap;
+      }
+      li.icons {
+        justify-content: flex-end;
+      }
+      & > img.cover {
+        height: 200px;
+        margin-left: calc( 54% - 454.9px);
+      }
+    }
+  }
+  @include _media( "xs" ){
+    & > img.cover {
+      height: 200px;
+      margin-left: calc( 41.6% - 412.264px);
+    }
+  }
+}
+
+/**
+* panel-activitie component
+*/
+
+
+/**
+* panel-comment component
+*/
+div.panel-comment {
+  padding: 1rem 0;
+}
+
+
+/**
+* panel-note component
+*/
+div.panel-note {
+  align-self: stretch;
+
+  padding: 1rem 0;
+  .mark {
+    width: 20px;
+    height: 20px;
+  }
+  div.type {
+    padding: 0 2rem;
+  }
+}
+
+/**
+* panel-tips component
+*/
+div.panel-tips {
+  padding: 1rem 0;
+  .message,
+  .method {
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 1rem;
+  }
+  .mark {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/**
+* panel-input component
+*/
+div.panel-input {
+  width: 300px;
+  padding: 1rem 0;
+}
+
+/**
+* panel-form component
+*/
+div.panel-form {
+  padding: 1rem 0;
+
+  form {
+    max-width: 600px;
+
+    .input-group {
+      input[type = "text"],
+      input[type = "password"],
+      textarea {
+        border-bottom: 1px $color-light solid;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+$color-font: #191f41;
+$color-type: #0e1956;
+
+$color-body-background: #f7f8fa;
+$color-card: #2581b9;
+
+$color-light: #e3e9f7;
+$color-deep: #9fadc7;
+
+$margin-el-spacing: (0 3.2px);
+
+$breakpoints: (
+  "xs"  : 544px,
+  "sm"  : 768px,
+  "md"  : 992px,
+  "lg"  : 1380px,
+  "lx"  : null
+);
