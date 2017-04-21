@@ -24,18 +24,6 @@
       }
     },
     created(){
-      const { stringify } = require('querystring');
-
-      const params = { account:'nihaoah213' }
-      $axios.post('post/login',
-          stringify( params )
-        )
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((err) => {
-          console.log(err)
-        }) 
     },
     components: {
       headerPage

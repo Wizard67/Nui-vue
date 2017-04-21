@@ -6,7 +6,6 @@ import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
 
-import cardUser from './modules/containers/card-user'
 import routerApp from './modules/containers/router-app'
 import routerPage from './modules/containers/router-page'
 
@@ -25,7 +24,6 @@ export default new Vuex.Store({
   mutations,
   actions,
   modules: {
-    cardUser,
     routerApp,
     routerPage,
 

@@ -1,10 +1,9 @@
 export default {
-
   /**
    * 获取简化数值，以 'k' 的形式返回
    * @param {Number}  value
    */
-  valueBirefly: (state) => (value) => {
+  _global_valueBirefly: (state) => (value) => {
 
     if (typeof value !== 'number' || value < 1000) {
       return value
@@ -20,7 +19,7 @@ export default {
    * @param  {Object} value
    * @return {String}
    */
-  valueIntoForm: (state) => (value) => {
+  _global_valueIntoForm: (state) => (value) => {
 
     if (typeof value !== 'object') {
       return value

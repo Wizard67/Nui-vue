@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" :value="value" @input="update">
+    <input v-if="1" type="text" :value="value" @input="update">
     <p>{{ test }}</p>
   </div>
 </template>

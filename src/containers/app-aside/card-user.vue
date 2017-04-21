@@ -24,22 +24,27 @@
 
   export default {
     name: 'card-user',
-    data () {
-      return {
-      }
+    created () {
+
     },
     computed: {
       avatar() {
-        return this.$store.getters._cardUser_getValue('avatar')
+        return this.$store.state.avatar
       },
       topic() {
-        return this.$store.getters._cardUser_getValue('topic')
+        return this.valueBirefly( this.$store.state.topic )
       },
       follower() {
-        return this.$store.getters._cardUser_getValue('follower')
+        return this.valueBirefly( this.$store.state.follower )
       },
       approval() {
-        return this.$store.getters._cardUser_getValue('approval')
+        return this.valueBirefly( this.$store.state.approval )
+      }
+    },
+    methods: {
+      // 数值简化
+      valueBirefly( value ) {
+        return this.$store.getters._global_valueBirefly( value )
       }
     }
   }
