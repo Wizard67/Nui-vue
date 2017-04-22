@@ -17,9 +17,9 @@ const actions = {
   // 获取表单登录信息
   _login_checkAccount( { commit, rootGetters: {_global_valueIntoForm} }, value){
 
-    console.log(commit)
     // 格式化数据
     const params = _global_valueIntoForm(value)
+
     // 发送 ajax 请求
     $ajax.post( 'post/login', params )
       .then((res) => {

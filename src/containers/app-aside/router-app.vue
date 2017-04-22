@@ -16,7 +16,7 @@
     name: 'route-app',
     computed: {
       index() {
-        return this.$store.getters._routerApp_getIndex( this.$router.options.routes )
+        return this.$store.getters._global_getIndex( this.$router.options.routes )
       }
     }
   }

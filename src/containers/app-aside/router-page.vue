@@ -27,7 +27,7 @@
       routers() {
         // console.log(this.$route.path)
         // console.log(this.$route.params)
-        return this.$store.getters._routerPage_getRouters( this.$route.path, this.$router.options.routes )
+        return this.$store.getters._global_getRouters( this.$route.path, this.$router.options.routes )
       }
     }
   }

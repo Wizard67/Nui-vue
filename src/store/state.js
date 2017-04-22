@@ -9,18 +9,18 @@ export default {
    * 用户发布作品数
    * @type {Number}
    */
-  topic: 100 || 0,
+  topic: localStorage.topic || 0,
 
 
   /**
    * 用户关注者数
    * @type {Number}
    */
-  follower: 23 || 0,
+  follower: localStorage.follower || 0,
 
   /**
    * 用户获得赞同数
    * @type {Number}
    */
-  approval: 6532 || 0
+  approval: localStorage.approval || 0
 }
