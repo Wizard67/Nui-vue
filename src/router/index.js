@@ -67,7 +67,7 @@ let routes = [
         path: 'register',
         name: 'register',
         meta: {
-          pin: true,
+          pin: false,
           marks: ['注册', 'Register']
         },
         component: register

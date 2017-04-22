@@ -7,17 +7,22 @@
         <form>
           <div class="input-group">
             <span class="lamp"></span>
-            <input type="text" name="" placeholder="email@email.com">
+            <input type="text" v-model="account" placeholder="email@email.com">
           </div>
 
           <div class="input-group">
             <span class="lamp"></span>
-            <input type="password" name="" placeholder="password">
+            <input type="password" v-model="password" placeholder="password">
+          </div>
+
+          <div class="input-group">
+            <span class="lamp"></span>
+            <input type="password" placeholder="password">
           </div>
 
           <ul class="flex-end">
             <li>
-              <button type="button" class="shadow-btn">Sign up</button>
+              <button @click.prevent="submitData" type="submit" class="shadow-btn">Sign up</button>
             </li>
           </ul>
         </form>
@@ -30,6 +35,23 @@
   import headerPage from '@/containers/header-page'
 
   export default {
+    data(){
+      return {
+        account: '',
+        password: ''
+      }
+    },
+    methods: {
+      submitData(){
+        // 获取表单数据
+        let value = {}
+        value['account'] = this.account
+        value['password'] = this.password
+
+        // 提交数据
+        this.$store.dispatch( '_register_registerAccount', value)
+      }
+    },
     components: {
       headerPage
     }

@@ -7,6 +7,7 @@ import mutations from './mutations'
 import actions from './actions'
 
 import login from './modules/user/login'
+import register from './modules/user/register'
 
 import sharings from './modules/sharings/sharings'
 import sharing from './modules/sharings/sharing'
@@ -22,6 +23,7 @@ export default new Vuex.Store({
   actions,
   modules: {
     login,
+    register,
   
     sharings,
     sharing,
