@@ -44,9 +44,10 @@
     methods: {
       submitData(){
         // 获取表单数据
-        let value = {}
-        value['account'] = this.account
-        value['password'] = this.password
+        const value = {
+          account: this.account,
+          password: this.password
+        }
 
         // 提交数据
         this.$store.dispatch( '_register_registerAccount', value)

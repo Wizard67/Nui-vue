@@ -10,9 +10,10 @@ import login from './modules/user/login'
 import register from './modules/user/register'
 
 import sharings from './modules/sharings/sharings'
+import sharingsCreates from './modules/sharings/creates'
 import sharing from './modules/sharings/sharing'
-import sharingsComments from './modules/sharings/comments'
-import sharingsSteps from './modules/sharings/Steps'
+import sharingComments from './modules/sharings/comments'
+import sharingSteps from './modules/sharings/Steps'
 
 Vue.use( Vuex )
 
@@ -26,8 +27,9 @@ export default new Vuex.Store({
     register,
   
     sharings,
+    sharingsCreates,
     sharing,
-    sharingsComments,
-    sharingsSteps
+    sharingComments,
+    sharingSteps
   }
 })

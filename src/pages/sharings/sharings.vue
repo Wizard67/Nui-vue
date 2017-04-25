@@ -29,6 +29,9 @@
       data() {
         return this.$store.state.sharings
       }
+    },
+    mounted(){
+      this.$store.dispatch( '_sharings_getSharings', 1 )
     }
   }
 </script>

@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import $ajax from '@/axios'
+import $router from '@/router'
 
 /**
  *  404 page
@@ -80,6 +82,14 @@ let routes = [
           marks: ['登录', 'Login']
         },
         component: login
+      },
+      {
+        path: 'logout',
+        name: 'logout',
+        meta: {
+          pin: true,
+          marks: ['注销', 'Logout']
+        }
       }
     ]
   },
@@ -103,7 +113,7 @@ let routes = [
         path: 'schedules',
         name: 'schedules',
         meta: {
-          pin: true,
+          pin: false,
           marks: ['日程表', 'Schedules']
         },
         component: schedules
@@ -111,7 +121,7 @@ let routes = [
       {
         path: 'bookmarks',
         meta: {
-          pin: true,
+          pin: false,
           marks: ['书签页', 'Bookmarks']
         },
         component: bookmarks,
@@ -125,7 +135,7 @@ let routes = [
             path: 'test',
             name: 'test',
             meta: {
-              pin: true,
+              pin: false,
               marks: ['测试页', 'test']
             },
             component: bookmarks
@@ -136,7 +146,7 @@ let routes = [
         path: 'favorites',
         name: 'favorites',
         meta: {
-          pin: true,
+          pin: false,
           marks: ['收藏夹', 'Favorites']
         },
         component: favorites
@@ -145,7 +155,7 @@ let routes = [
         path: 'messages',
         name: 'messages',
         meta: {
-          pin: true,
+          pin: false,
           marks: ['消息盒子', 'Messages']
         },
         component: messages
@@ -232,9 +242,28 @@ const Routers = new Router({
 })
 
 /**
- * 绑定 beforeEach 钩子进行权限判定
+ * 绑定 beforeEach 钩子对路由进行操作
  */
 Routers.beforeEach((to, from, next) => {
+
+    // 执行特定路由操作
+    if ( to.name === 'logout') {
+      // 发送注销请求
+      $ajax.post( 'delete/logout' )
+        .then((res) => {
+
+          if ( res.data.inf ) {
+            $router.push({name:'home'})
+          }else{
+            // console.log(error)
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
+    // 判定用户是否拥有浏览权限
     if ( to.meta.auth ) {
         if ( true ) {
             next();

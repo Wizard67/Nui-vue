@@ -5,8 +5,10 @@ import axios from 'axios'
 Vue.prototype.$axios = axios
 
 // axios配置
-axios.defaults.baseURL = 'http://localhost/index.php';
 
-
+// 设置默认路径
+axios.defaults.baseURL = 'http://localhost/index.php'
+// 携带 cookie 请求
+axios.defaults.withCredentials = true;
 
 export default axios

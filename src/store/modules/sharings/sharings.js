@@ -1,3 +1,6 @@
+import $ajax from '@/axios'
+import $router from '@/router'
+
 const state = [
   // 分享信息列表
   {
@@ -42,7 +45,18 @@ const getters = {
 }
 
 const actions = {
+  // 获取分享列表信息
+  _sharings_getSharings( {commit}, page){
 
+    // 发送 ajax 请求
+    $ajax.post( 'get/sharings/', page )
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 }
 
 const mutations = {

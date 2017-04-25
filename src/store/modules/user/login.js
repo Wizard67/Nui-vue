@@ -23,6 +23,7 @@ const actions = {
     // 发送 ajax 请求
     $ajax.post( 'post/login', params )
       .then((res) => {
+
         // 判断是否登录成功
         if ( res.data.inf ) {
 
@@ -37,7 +38,7 @@ const actions = {
           commit( '_global_changeAvatar', data.avatar )
 
           // url 跳转
-          $router.push({name:'home'})
+          // $router.push({name:'home'})
 
         }else{
           console.log('sorry')
