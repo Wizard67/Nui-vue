@@ -1,34 +1,74 @@
 export default {
   /**
    * 获取简化数值，以 'k' 的形式返回
-   * @param {Number}  value
+   * @param {Number}  num
    */
-  _global_valueBirefly: (state) => (value) => {
+  _global_valueBirefly: (state) => (num) => {
 
-    if (typeof value !== 'number' || value < 1000) {
-      return value
+    if (typeof num !== 'number' || num < 1000) {
+      return num
     }
 
-    const newValue = ( value / 1000 ).toString()
+    const newValue = ( num / 1000 ).toString()
 
     return newValue.slice( 0, newValue.indexOf('.')+2 ) + ' ' + 'k'      
   },
 
   /**
    * 将对象转换为表单数组
-   * @param  {Object} value
+   * @param  {Object} obj
    * @return {String}
    */
-  _global_valueIntoForm: (state) => (value) => {
+  _global_valueIntoForm: (state) => (obj) => {
 
-    if (typeof value !== 'object') {
-      return value
+    if (typeof obj !== 'object') {
+      return obj
     }
 
     // 调用 querystring
     const { stringify } = require('querystring');
 
-    return  stringify( value )
+    return  stringify( obj )
+  },
+
+  /**
+   * 对服务器数据进行格式化
+   * @param  {Object} obj
+   * @return {Object}
+   */
+  _global_handleDatas: (state) => (obj) => {
+
+    if (typeof obj !== 'object') return obj
+
+    // 将字符串转换为数值
+    const toNumber = ( obj, key ) => {
+
+      if ( obj.hasOwnProperty(key) ) {
+        let value = obj[key]
+        // 如果为数组则遍历
+        if (Array.isArray(value)) {
+          return value.forEach( (item, index, value ) => {
+            value[index] = Number(item)
+          })        
+        }
+        // 如果为字符串直接转换
+        if (typeof value === 'string') {
+          return (value = Number(value))
+        }        
+      }
+    }
+
+    obj.sid = toNumber(obj, 'sid')
+    obj.date = toNumber(obj, 'date')
+    obj.date = toNumber(obj, 'date')
+    obj.views = toNumber(obj, 'views')
+    obj.hearts = toNumber(obj, 'hearts')
+    obj.comments = toNumber(obj, 'comments')
+
+    obj.users = obj.users.split('|')
+    toNumber( obj, 'users' )
+
+    return obj
   },
 
   /**

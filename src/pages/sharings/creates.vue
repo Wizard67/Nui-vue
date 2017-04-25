@@ -43,7 +43,7 @@
       return {
         title: '',
         summary: '',
-        cover: ''
+        cover: '/static/pictures/sharing.jpg'
       }
     },
     methods: {
@@ -53,7 +53,7 @@
         const value = {
           title: this.title,
           summary: this.summary,
-          cover: 'cover'
+          cover: this.cover
         }
 
         // 提交数据

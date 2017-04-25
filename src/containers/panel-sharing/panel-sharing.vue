@@ -21,11 +21,11 @@
         <ul class="flex-between-wrap-padding">
           <li class="flex-hang">
             <nUsers
-              v-for="(item,key) in users"
-              :src="item.avatar"
-              :key="item.uid"
+              v-for="item in users"
+              :src="`/static/pictures/user${item}.jpg`"
+              :key="item"
               :target="'user'"
-              :id="item.uid"
+              :id="item"
               link />
           </li>
           <li class="flex-hang">
@@ -51,6 +51,16 @@
 
   export default {
     name: 'panel-sharing',
+    data(){
+      return {
+        datas: {
+          date: this.$props.date,
+          views: this.$props.views,
+          hearts: this.$props.hearts,
+          comments: this.$props.comments          
+        }
+      }
+    },
     props: {
       sid:{
         type: Number,
@@ -72,8 +82,20 @@
         type: Array,
         required: true
       },
-      datas: {
-        typr: Object,
+      date: {
+        typr: Number,
+        required: true
+      },
+      views: {
+        typr: Number,
+        required: true
+      },
+      hearts: {
+        typr: Number,
+        required: true
+      },
+      comments: {
+        typr: Number,
         required: true
       }
     },

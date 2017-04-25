@@ -9,7 +9,10 @@
         :title="item.title" 
         :summary="item.summary" 
         :users="item.users" 
-        :datas="item.datas"
+        :date="item.date"
+        :views="item.views"
+        :hearts="item.hearts"
+        :comments="item.comments"
         :key="item.sid">
       </panelSharing>
     </article>
@@ -27,7 +30,7 @@
     },
     computed: {
       data() {
-        return this.$store.state.sharings
+        return this.$store.state.sharings.list
       }
     },
     mounted(){
