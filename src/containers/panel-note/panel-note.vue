@@ -3,11 +3,11 @@
     <ul class="flex-column">
       <li class="flex-hang-padding">
         <nUsers
-          v-for="(item,key) in users"
-          :src="item.avatar"
-          :key="item.uid"
+          v-for="item in users"
+          :src="`/static/pictures/user${item}.jpg`"
+          :key="item"
           :target="'user'"
-          :id="item.uid"
+          :id="item"
           link />
       </li>
       <li>
@@ -34,7 +34,19 @@
 
   export default {
     name: 'panel-note',
+    data(){
+      return {
+        datas: {
+          date: this.$props.date,
+          time: this.$props.time
+        }
+      }
+    },
     props: {
+      nid: {
+        type: Number,
+        required: true
+      },
       users: {
         type: Array,
         required: true
@@ -43,10 +55,18 @@
         type: String,
         required: true
       },
-      datas: {
-        typr: Object,
+      date: {
+        typr: Number,
         required: true
-      }
+      },
+      built: {
+        typr: Number,
+        required: true
+      },
+      time: {
+        typr: Number,
+        required: true
+      },
     },
     components: {
       nUsers,

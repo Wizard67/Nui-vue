@@ -28,7 +28,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  changData( state, value ){
+  _sharings_changList( state, value ){
     state.list = value
   }
 
@@ -56,7 +56,7 @@ const actions = {
             data.push( _global_handleDatas(datas.val[item]) )
           }
           // 添加数据到 state
-          commit( 'changData', data )
+          commit( '_sharings_changList', data )
         }
       })
       .catch((err) => {

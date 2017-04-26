@@ -1,6 +1,12 @@
 <template>
-  <router-link v-if="link" :to="{ name:target, params:{sid: id} }" :src="src" class="cover pointer" tag="img"/>
-  <img v-else class="cover pointer" :src="src">
+  <router-link v-if="link"
+              :to="{ name:target, params:{sid: id} }"
+              :src="src"
+              class="cover pointer"
+              tag="img"/>
+  <img v-else
+       class="cover pointer"
+       :src="src">
 </template>
 
 <script>

@@ -1,42 +1,45 @@
-const state = [
-  // 步骤记录列表
-  {
-    // 步骤编号
-    sid: 1,
-    // 创作者
-    users: [
-      { 
-        // 用户编号
-        uid: 1,
-        // 头像
-        avatar: require('@/assets/pictures/user4.jpg')
-      },
-      { uid: 2, avatar: require('@/assets/pictures/user1.jpg') }
-    ],
-    // 内容
-    content: 'first we need light',
-
-    // 分享数据
-    datas: {
-      // 发布时间
-      date: 100
+const state = {
+  list: [
+    {
+      // 步骤编号
+      ssid: 1,
+      // 创作者
+      users: [ 1, 2, 3, 4 ],
+      // 内容
+      content: 'first we need light',
+      // 分享数据
+      date: 1000000000,
+      built: 1000000000,
+      time: 3
+    },
+    {
+      // 步骤编号
+      ssid: 2,
+      // 创作者
+      users: [ 1, 2, 3, 5 ],
+      // 内容
+      content: 'hello world',
+      // 分享数据
+      date: 1000000000,
+      built: 1000000000,
+      time: 1
     }
-  },
-  {
-    sid: 2,
-    users: [
-      { uid: 1, avatar: require('@/assets/pictures/user4.jpg') },
-      { uid: 2, avatar: require('@/assets/pictures/user1.jpg') },
-      { uid: 3, avatar: require('@/assets/pictures/user3.jpg') },
-    ],
-    content: 'second we need light',
-    datas: {
-      date: 100
-    }
-  }
-]
+  ]
+}
 
 const getters = {
+
+}
+
+const mutations = {
+  /**
+   * 将服务器获取到的数据添加到 state 中
+   * @param  {Array} state
+   * @param  {Array} value
+   */
+  _steps_changList( state, value ){
+    state.list = value
+  }
 
 }
 
@@ -44,9 +47,7 @@ const actions = {
 
 }
 
-const mutations = {
 
-}
 
 export default {
   state,

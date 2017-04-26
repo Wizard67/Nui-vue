@@ -13,7 +13,7 @@ import sharings from './modules/sharings/sharings'
 import sharingsCreates from './modules/sharings/creates'
 import sharing from './modules/sharings/sharing'
 import sharingComments from './modules/sharings/comments'
-import sharingSteps from './modules/sharings/Steps'
+import sharingSteps from './modules/sharings/steps'
 
 Vue.use( Vuex )
 

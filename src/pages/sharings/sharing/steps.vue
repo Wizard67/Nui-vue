@@ -4,12 +4,15 @@
     <article>
       <panelNote
         v-for="(item,key) in data"
-        :nid="item.nid"
-        :users="item.users" 
-        :content="item.content" 
-        :datas="item.datas" 
-        :key="item.nid">
+        :nid="item.ssid"
+        :users="item.users"
+        :content="item.content"
+        :date="item.date"
+        :built="item.built"
+        :time="item.time"
+        :key="item.ssid">
       </panelNote>
+      <p v-for="(item,key) in data" >{{item}}</p>
     </article>
   </main>
 </template>
@@ -25,8 +28,7 @@
     },
     computed: {
       data() {
-        var promise = new Promise(function () { console.log('d'); })
-        return this.$store.state.sharingsSteps
+        return this.$store.state.sharingSteps.list
       }
     }
   }
