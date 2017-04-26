@@ -1,29 +1,16 @@
+import $ajax from '@/axios'
+import $router from '@/router'
+
 const state = {
   list: [
-    {
-      // 步骤编号
-      ssid: 1,
-      // 创作者
-      users: [ 1, 2, 3, 4 ],
-      // 内容
-      content: 'first we need light',
-      // 分享数据
-      date: 1000000000,
-      built: 1000000000,
-      time: 3
-    },
-    {
-      // 步骤编号
-      ssid: 2,
-      // 创作者
-      users: [ 1, 2, 3, 5 ],
-      // 内容
-      content: 'hello world',
-      // 分享数据
-      date: 1000000000,
-      built: 1000000000,
-      time: 1
-    }
+    // {
+    //   ssid: 1,
+    //   users: [ 1, 2, 3, 4 ],
+    //   content: 'first we need light',
+    //   date: 1000000000,
+    //   built: 1000000000,
+    //   time: 3
+    // }
   ]
 }
 
@@ -44,6 +31,34 @@ const mutations = {
 }
 
 const actions = {
+
+  /**
+   * 获取分享步骤列表数据
+   * @param  {Function} options.commit
+   * @param  {Number} sid
+   */
+  _steps_getSteps( {commit, rootGetters: {_global_handleDatas} }, sid){
+
+    // 发送 ajax 请求
+    $ajax.get( `get/steps/${sid}` )
+      .then((res) => {
+        const datas = res.data
+
+        // 成功获取到数据
+        if ( datas.inf ) {
+          let data = []
+          for (let item in datas.val) {
+            // 对数据进行格式化
+            data.push( _global_handleDatas(datas.val[item]) )
+          }
+          // 添加数据到 state
+          commit( '_steps_changList', data )
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
 }
 

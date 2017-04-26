@@ -12,7 +12,6 @@
         :time="item.time"
         :key="item.ssid">
       </panelNote>
-      <p v-for="(item,key) in data" >{{item}}</p>
     </article>
   </main>
 </template>
@@ -30,6 +29,9 @@
       data() {
         return this.$store.state.sharingSteps.list
       }
+    },
+    mounted(){
+      this.$store.dispatch( '_steps_getSteps', 1)
     }
   }
 </script>

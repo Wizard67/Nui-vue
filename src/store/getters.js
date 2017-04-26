@@ -40,34 +40,44 @@ export default {
 
     if (typeof obj !== 'object') return obj
 
-    // 将字符串转换为数值
-    const toNumber = ( obj, key ) => {
+    // 将用户字符串转换为数组
+    if ( obj.hasOwnProperty('users'))obj.users = obj.users.split('|')
 
-      if ( obj.hasOwnProperty(key) ) {
-        let value = obj[key]
-        // 如果为数组则遍历
-        if (Array.isArray(value)) {
-          return value.forEach( (item, index, value ) => {
-            value[index] = Number(item)
-          })        
+    const list = ['built',
+                  'comments',
+                  'date',
+                  'hearts',
+                  'sid',
+                  'ssid',
+                  'time',
+                  'users',
+                  'views']
+
+    // 将字符串转换为数值
+    const toNumber = ( obj ) => {
+
+      for ( let key in list) {
+        
+        if ( obj.hasOwnProperty(list[key]) ) {
+          let value = obj[list[key]]
+
+          // 判断是否为数组
+          if (Array.isArray(value)) {
+            value.forEach( (item, index, value ) => {
+              obj[list[key]][index] = Number(item)
+            })
+          }
+          // 判断是否为字符串
+          if (typeof value === 'string') {
+            (obj[list[key]] = Number(value))
+          }
         }
-        // 如果为字符串直接转换
-        if (typeof value === 'string') {
-          return (value = Number(value))
-        }        
       }
+
+      return obj
     }
 
-    obj.sid = toNumber(obj, 'sid')
-    obj.date = toNumber(obj, 'date')
-    obj.date = toNumber(obj, 'date')
-    obj.views = toNumber(obj, 'views')
-    obj.hearts = toNumber(obj, 'hearts')
-    obj.comments = toNumber(obj, 'comments')
-
-    obj.users = obj.users.split('|')
-    toNumber( obj, 'users' )
-
+    obj = toNumber( obj )
     return obj
   },
 

@@ -44,7 +44,7 @@ const actions = {
   _sharings_getSharings( {commit, rootGetters: {_global_handleDatas} }, page){
 
     // 发送 ajax 请求
-    $ajax.post( 'get/sharings/', page )
+    $ajax.get( `get/sharings/${page}` )
       .then((res) => {
         const datas = res.data
 
