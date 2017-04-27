@@ -43,16 +43,12 @@ const actions = {
     $ajax.get( `get/steps/${sid}` )
       .then((res) => {
         const datas = res.data
-
+        console.log(res)
         // 成功获取到数据
         if ( datas.inf ) {
-          let data = []
-          for (let item in datas.val) {
-            // 对数据进行格式化
-            data.push( _global_handleDatas(datas.val[item]) )
-          }
+
           // 添加数据到 state
-          commit( '_steps_changList', data )
+          commit( '_steps_changList', datas.val )
         }
       })
       .catch((err) => {
