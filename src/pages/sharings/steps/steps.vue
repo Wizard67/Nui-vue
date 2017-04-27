@@ -27,7 +27,7 @@
     },
     computed: {
       data() {
-        return this.$store.state.sharingSteps.list
+        return this.$store.state.Steps.list
       }
     },
     mounted(){

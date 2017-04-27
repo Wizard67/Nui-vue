@@ -20,11 +20,12 @@ const actions = {
     $ajax.post( 'post/sharingsCreates', params )
       .then((res) => {
 
+        console.log(res)
         // 判断是否创建成功
         if ( res.data.inf ) {
 
           // url 跳转至分享内容页面
-          $router.push( {name:'sharing', params:{sid: res.data.val }})
+          $router.push( {name:'steps', params:{sid: res.data.val }})
 
         }else{
           console.log('sorry')

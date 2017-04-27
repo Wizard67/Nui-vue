@@ -50,13 +50,9 @@ const actions = {
 
         // 成功获取到数据
         if ( datas.inf ) {
-          let data = []
-          for (let item in datas.val) {
-            // 对数据进行格式化
-            data.push( _global_handleDatas(datas.val[item]) )
-          }
+
           // 添加数据到 state
-          commit( '_sharings_changList', data )
+          commit( '_sharings_changList', datas.val )
         }
       })
       .catch((err) => {

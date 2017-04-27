@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 // 添加全局方法
-Vue.prototype.$axios = axios
+// Vue.prototype.$axios = axios
 
 // axios配置
 

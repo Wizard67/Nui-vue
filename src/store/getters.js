@@ -89,56 +89,6 @@ export default {
   },
 
   /**
-   * 对服务器数据进行格式化
-   * @param  {Object} obj
-   * @return {Object}
-   */
-  _global_handleDatas: (state) => (obj) => {
-
-    if (typeof obj !== 'object') return obj
-
-    // 将用户字符串转换为数组
-    if ( obj.hasOwnProperty('users'))obj.users = obj.users.split('|')
-
-    const list = ['built',
-                  'comments',
-                  'date',
-                  'hearts',
-                  'sid',
-                  'ssid',
-                  'time',
-                  'users',
-                  'views']
-
-    // 将字符串转换为数值
-    const toNumber = ( obj ) => {
-
-      for ( let key in list) {
-        
-        if ( obj.hasOwnProperty(list[key]) ) {
-          let value = obj[list[key]]
-
-          // 判断是否为数组
-          if (Array.isArray(value)) {
-            value.forEach( (item, index, value ) => {
-              obj[list[key]][index] = Number(item)
-            })
-          }
-          // 判断是否为字符串
-          if (typeof value === 'string') {
-            (obj[list[key]] = Number(value))
-          }
-        }
-      }
-
-      return obj
-    }
-
-    obj = toNumber( obj )
-    return obj
-  },
-
-  /**
    * 获取路径根节点
    * @param  {Obeject} state
    * 
