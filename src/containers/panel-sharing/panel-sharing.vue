@@ -4,13 +4,13 @@
       <li class="cover">
         <nCover
           :src="cover"
-          :target="'sharing'"
+          :target="'steps'"
           :id="sid"
           link />
       </li>
       <li class="detail">
         <nTitle
-          :target="'sharing'"
+          :target="'steps'"
           :id="sid"
           link >
           {{ title }}
@@ -54,7 +54,7 @@
     data(){
       return {
         datas: {
-          date: this.$props.date,
+          date: this.dateChange(this.$props.date),
           views: this.$props.views,
           hearts: this.$props.hearts,
           comments: this.$props.comments          
@@ -105,6 +105,12 @@
       nContent,
       nUsers,
       nIcons
+    },
+    methods: {
+      // 日期格式化
+      dateChange( value ) {
+        return this.$store.getters._global_dateChange( value )
+      }
     }
   }
 </script>

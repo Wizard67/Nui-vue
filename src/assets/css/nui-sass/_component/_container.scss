@@ -180,3 +180,14 @@ div.panel-form {
     }
   }
 }
+
+/**
+ * panel-step component
+ */
+div.panel-step {
+  background-color: transparent;
+
+  div.panel-note {
+    margin: .5rem 0;
+  }
+}

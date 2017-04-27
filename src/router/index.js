@@ -35,6 +35,7 @@ import sharings from '@/pages/sharings/sharings'
 import sharingsCreates from '@/pages/sharings/creates'
 import sharing from '@/pages/sharings/sharing/sharing'
 import steps from '@/pages/sharings/sharing/steps'
+import stepsCreates from '@/pages/sharings/sharing/creates'
 import comments from '@/pages/sharings/sharing/comments'
 
 
@@ -187,27 +188,36 @@ let routes = [
         },
         component: sharingsCreates
       },
-      {
-        path: 'sharing/:sid(\\d+)',
+      { 
+        path: 'steps/:sid(\\d+)',
         meta: {
           pin: false,
-          marks: ['内容', 'Sharing']
+          marks: ['步骤', 'Steps']
         },
         component: pageDefault,
         children: [
           {
             path: '',
+            name: 'steps',
+            component: steps            
+          },
+          {
+            path: 'sharing/:sid(\\d+)?',
             name: 'sharing',
+            meta: {
+              pin: false,
+              marks: ['内容', 'Sharing']
+            },
             component: sharing
           },
           {
-            path: 'steps',
-            name: 'steps',
+            path: 'stepsCreates',
+            name: 'stepsCreates',
             meta: {
               pin: true,
-              marks: ['步骤', 'Steps']
+              marks: ['新增', 'Creates']
             },
-            component: steps
+            component: stepsCreates
           },
           {
             path: 'comments',

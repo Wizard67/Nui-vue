@@ -8,12 +8,10 @@
         :user="item.user"
         :content="item.content"
         :datas="item.datas"
-        :key="item.cid"
-      >
+        :key="item.cid">
       </comment>
     </article>    
   </main>
-
 </template>
 
 <script>
@@ -27,7 +25,7 @@
     },
     computed: {
       data() {
-        return this.$store.state.sharingsComments
+        return this.$store.state.sharingComments
       }
     }
   }

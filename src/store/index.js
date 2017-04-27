@@ -14,6 +14,7 @@ import sharingsCreates from './modules/sharings/creates'
 import sharing from './modules/sharings/sharing'
 import sharingComments from './modules/sharings/comments'
 import sharingSteps from './modules/sharings/steps'
+import sharingStepCreates from './modules/sharings/stepCreates'
 
 Vue.use( Vuex )
 
@@ -30,6 +31,7 @@ export default new Vuex.Store({
     sharingsCreates,
     sharing,
     sharingComments,
-    sharingSteps
+    sharingSteps,
+    sharingStepCreates
   }
 })

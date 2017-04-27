@@ -2,7 +2,7 @@
   <main>
     <headerPage></headerPage>
     <article>
-      <panelNote
+      <panelStep
         v-for="(item,key) in data"
         :nid="item.ssid"
         :users="item.users"
@@ -11,19 +11,19 @@
         :built="item.built"
         :time="item.time"
         :key="item.ssid">
-      </panelNote>
+      </panelStep>
     </article>
   </main>
 </template>
 
 <script>
   import headerPage from '@/containers/header-page'
-  import panelNote from '@/containers/panel-note'
+  import panelStep from '@/containers/panel-step'
 
   export default {
     components: {
       headerPage,
-      panelNote
+      panelStep
     },
     computed: {
       data() {
@@ -31,7 +31,8 @@
       }
     },
     mounted(){
-      this.$store.dispatch( '_steps_getSteps', 1)
+      const sid = this.$route.params.sid
+      this.$store.dispatch( '_steps_getSteps', sid)
     }
   }
 </script>

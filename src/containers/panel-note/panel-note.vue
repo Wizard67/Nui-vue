@@ -37,9 +37,10 @@
     data(){
       return {
         datas: {
-          date: this.$props.date,
+          date: this.dateChange(this.$props.date),
           time: this.$props.time
-        }
+        },
+        builtDate: this.dateChange(this.$props.built)
       }
     },
     props: {
@@ -72,6 +73,12 @@
       nUsers,
       nContent,
       nIcons
+    },
+    methods: {
+      // 日期格式化
+      dateChange( value ) {
+        return this.$store.getters._global_dateChange( value, 'only')
+      }
     }
   }
 </script>
