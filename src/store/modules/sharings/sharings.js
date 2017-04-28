@@ -31,7 +31,6 @@ const mutations = {
   _sharings_changList( state, value ){
     state.list = value
   }
-
 }
 
 const actions = {

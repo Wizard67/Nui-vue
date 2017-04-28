@@ -1,28 +1,23 @@
 <template>
-  <main>
-    <headerPage></headerPage>
-    <article>
-      <panelStep
-        v-for="(item,key) in data"
-        :nid="item.ssid"
-        :users="item.users"
-        :content="item.content"
-        :date="item.date"
-        :built="item.built"
-        :time="item.time"
-        :key="item.ssid">
-      </panelStep>
-    </article>
-  </main>
+  <article>
+    <panelStep
+      v-for="(item,key) in data"
+      :nid="item.ssid"
+      :users="item.users"
+      :content="item.content"
+      :date="item.date"
+      :built="item.built"
+      :time="item.time"
+      :key="item.ssid">
+    </panelStep>
+  </article>
 </template>
 
 <script>
-  import headerPage from '@/containers/header-page'
   import panelStep from '@/containers/panel-step'
 
   export default {
     components: {
-      headerPage,
       panelStep
     },
     computed: {

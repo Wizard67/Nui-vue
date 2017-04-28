@@ -1,37 +1,32 @@
 <template>
-  <main>
-    <headerPage></headerPage>
-    <article>
-      <div class="panel-form shadow-on">
-        <h2 class="title">用户登录</h2>
-        <form>
-          <div class="input-group">
-            <span class="lamp"></span>
-            <input type="text" v-model="account" placeholder="email@email.com">
-          </div>
+  <article>
+    <div class="panel-form shadow-on">
+      <h2 class="title">用户登录</h2>
+      <form>
+        <div class="input-group">
+          <span class="lamp"></span>
+          <input type="text" v-model="account" placeholder="email@email.com">
+        </div>
 
-          <div class="input-group">
-            <span class="lamp"></span>
-            <input type="password" v-model="password" placeholder="password">
-          </div>
+        <div class="input-group">
+          <span class="lamp"></span>
+          <input type="password" v-model="password" placeholder="password">
+        </div>
 
-          <ul class="flex-between">
-            <li>
-              <router-link :to="{name:'register'}" class="shadow-btn" tag="button">注册</router-link>
-            </li>
-            <li>
-              <button @click.prevent="submitData" type="submit" class="shadow-btn">Sign in</button>
-            </li>
-          </ul>
-        </form>
-      </div>   
-    </article>
-  </main>
+        <ul class="flex-between">
+          <li>
+            <router-link :to="{name:'register'}" class="shadow-btn" tag="button">注册</router-link>
+          </li>
+          <li>
+            <button @click.prevent="submitData" type="submit" class="shadow-btn">Sign in</button>
+          </li>
+        </ul>
+      </form>
+    </div>   
+  </article>
 </template>
 
 <script>
-  import headerPage from '@/containers/header-page'
-
   export default {
     data(){
       return {
@@ -52,7 +47,7 @@
       }
     },
     components: {
-      headerPage
+
     }
   }
 </script>

@@ -147,9 +147,13 @@ main {
   & > header {
     flex: none;
 
-    justify-content: space-between;
-
     background-color: white;
+    div.header-centent {
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
+    }
     form > div.dropdown {
       margin: 1rem 0;
     }

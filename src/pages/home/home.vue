@@ -1,27 +1,29 @@
 <template>
-  <main>
-    <headerPage></headerPage>
-    <article>
-      <p>这是home</p>
-      <Test v-model="test"></Test>
-    </article>
-    <p>{{ test }}</p>
-  </main>
+  <article>
+  </article>
 </template>
 
 <script>
-  import headerPage from '@/containers/header-page'
   import Test from '@/components/test'
 
   export default {
-    data(){
+    data() {
       return {
-        test: '你好'
+        username:"",
+        showErrorLabel:false,
       }
     },
     components: {
-      headerPage,
       Test
+    },
+    methods: {
+      userNameChange(){
+        if(this.check(this.username)){
+            this.showErrorLabel = false;
+        }else{
+            this.showErrorLabel = true;
+        }
+      }
     }
   }
 </script>

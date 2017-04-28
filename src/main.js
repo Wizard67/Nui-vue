@@ -5,6 +5,9 @@ import router from './router'
 import store from './store'
 import axios from './axios'
 
+import nui from './plugins/nui/'
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
