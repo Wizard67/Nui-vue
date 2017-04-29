@@ -23,7 +23,7 @@ const actions = {
     // 发送 ajax 请求
     $ajax.post( 'post/register', params )
       .then((res) => {
-
+        console.log(res)
         // 判断是否登录成功
         if ( res.data.inf ) {
 

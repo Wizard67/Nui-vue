@@ -6,6 +6,7 @@ import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
 
+import user from './modules/user/user'
 import login from './modules/user/login'
 import register from './modules/user/register'
 
@@ -24,6 +25,7 @@ export default new Vuex.Store({
   mutations,
   actions,
   modules: {
+    user,
     login,
     register,
   

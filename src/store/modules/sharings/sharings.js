@@ -40,7 +40,7 @@ const actions = {
    * @param  {Function} options.commit
    * @param  {Number} page
    */
-  _sharings_getSharings( {commit, rootGetters: {_global_handleDatas} }, page){
+  _sharings_getSharings( {commit}, page){
 
     // 发送 ajax 请求
     $ajax.get( `get/sharings/${page}` )

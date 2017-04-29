@@ -1,12 +1,12 @@
-export default{
-  install(Vue) {
-    // Vue.prototype.$alert = 'alert'
-    Vue.prototype.check = (value) => {
-      if (/^[\w]{6,8}$/.test(value)) {
-        return true
-      }else{
-        return false
+export default {
+
+  install: function (Vue, options) {
+
+    Vue.filter = {
+      test() {
+        console.log('plugin')
       }
     }
   }
+
 }

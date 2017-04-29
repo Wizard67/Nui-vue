@@ -6,10 +6,10 @@
         <li class="flex-hang-padding">
           <nUsers
             v-for="item in users"
-            :src="`/static/pictures/user${item}.jpg`"
+            :src="item.avatar"
             :key="item"
             :target="'user'"
-            :id="item"
+            :id="Number(item.uid)"
             link />
         </li>
         <li>
@@ -41,15 +41,14 @@
     data(){
       return {
         datas: {
-          date: this.dateChange(this.$props.date),
-          time: this.$props.time
+          date: this.dateChange(Number(this.$props.date)),
+          time: Number(this.$props.time)
         },
-        builtDate: this.dateChange(this.$props.built, 'only')
+        builtDate: this.dateChange(Number(this.$props.built), 'only')
       }
     },
     props: {
       nid: {
-        type: Number,
         required: true
       },
       users: {
@@ -60,18 +59,9 @@
         type: String,
         required: true
       },
-      date: {
-        typr: Number,
-        required: true
-      },
-      built: {
-        typr: Number,
-        required: true
-      },
-      time: {
-        typr: Number,
-        required: true
-      },
+      date: {},
+      built: {},
+      time: {},
     },
     components: {
       nUsers,

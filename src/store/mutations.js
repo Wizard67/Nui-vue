@@ -5,11 +5,7 @@ export default {
    */
   _global_changeAvatar( state, value ){
 
-    if (typeof value !== 'string') {
-      return
-    }
-
-    state.avatar = value
+    state.avatar = (value === 'default')?'/static/default.jpg':value
   },
 
   /**

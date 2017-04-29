@@ -5,13 +5,13 @@
         <nCover
           :src="cover"
           :target="'steps'"
-          :id="sid"
+          :id="Number(sid)"
           link />
       </li>
       <li class="detail">
         <nTitle
           :target="'steps'"
-          :id="sid"
+          :id="Number(sid)"
           link >
           {{ title }}
         </nTitle>
@@ -22,10 +22,10 @@
           <li class="flex-hang">
             <nUsers
               v-for="item in users"
-              :src="`/static/pictures/user${item}.jpg`"
+              :src="item.avatar"
               :key="item"
               :target="'user'"
-              :id="item"
+              :id="Number(item.uid)"
               link />
           </li>
           <li class="flex-hang">
@@ -54,16 +54,16 @@
     data(){
       return {
         datas: {
-          date: this.dateChange(this.$props.date),
-          views: this.$props.views,
-          hearts: this.$props.hearts,
-          comments: this.$props.comments          
+          date: this.dateChange(Number(this.$props.date)),
+          // views: this.$props.views,
+          hearts: Number(this.$props.hearts),
+          // comments: this.$props.comments,
+          items: Number(this.$props.items)     
         }
       }
     },
     props: {
       sid:{
-        type: Number,
         required: true
       },
       cover: {
@@ -82,22 +82,11 @@
         type: Array,
         required: true
       },
-      date: {
-        typr: Number,
-        required: true
-      },
-      views: {
-        typr: Number,
-        required: true
-      },
-      hearts: {
-        typr: Number,
-        required: true
-      },
-      comments: {
-        typr: Number,
-        required: true
-      }
+      date: {},
+      views: {},
+      hearts: {},
+      comments: {},
+      items: {}
     },
     components: {
       nCover,

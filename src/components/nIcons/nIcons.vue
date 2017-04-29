@@ -22,7 +22,8 @@
           'fa fa-eye':      this.type === 'views',
           'fa fa-heart':    this.type === 'hearts',
           'fa fa-comments': this.type === 'comments',
-          'fa fa-calendar': this.type === 'time'
+          'fa fa-calendar': this.type === 'time',
+          'fa fa-list-ul':  this.type === 'items',
         }
       }
     }
