@@ -52,21 +52,20 @@ export default {
         }
       }else{
         // 转化时间戳: n分钟前
-        switch( time ) {
-          case ( time >= 0 && time < 60 ):
-            changedDate = '刚刚'
-            break
-          case ( time >= 60 && time < 3600 ):
-            nTime = parseInt( time/60 )
-            changedDate = `${nTime} 分钟前`
-            break
-          case ( time >= 3600 && time < 86400 ):
-            nTime = parseInt( time/3600 )
-            changedDate = `${nTime} 小时前`
-            break
-          default:
-            nTime = parseInt( time/86400 )
-            changedDate = `${nTime} 天前` 
+        if( time >= 0 && time < 60 ){ 
+          changedDate = '刚刚'
+        }
+        else if ( time >= 60 && time < 3600 ){ 
+          nTime = parseInt( time/60 )
+          changedDate = `${nTime} 分钟前`
+        } 
+        else if ( time >= 3600 && time < 86400 ){ 
+          nTime = parseInt( time/3600 )
+          changedDate = `${nTime} 小时前` 
+        } 
+        else{ 
+          nTime = parseInt( time/86400 )
+          changedDate = `${nTime} 天前` 
         }
       }
 

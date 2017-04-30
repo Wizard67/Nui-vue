@@ -15,7 +15,8 @@
     <div class="panel-note shadow-on">
       <ul class="flex-padding-column">
         <li v-for="item in dataActive">
-          {{item.built|formatDate('normal')}} {{item.username}} {{item.content}}
+          {{ item.built | formatDate }} {{ item.username }} 
+          <router-link :to="{name:'',params:{}} " >{{ item.content }}</router-link>
         </li>
       </ul>
     </div>
