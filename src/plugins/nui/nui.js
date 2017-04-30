@@ -9,11 +9,11 @@ export default {
      */
     Vue.filter('formatNum', function ( num ) {
 
-      if (typeof Number(num) !== 'number' || num < 1000) return
+      if (typeof Number(num) !== 'number' || num < 1000) return num
 
-      const newValue = ( num / 1000 ).toString()
+      const rslt = ( num / 1000 ).toString()
 
-      return newValue.slice( 0, newValue.indexOf('.')+2 ) + ' ' + 'k'
+      return rslt.slice( 0, rslt.indexOf('.')+2 ) + ' ' + 'k'
     })
 
     /**
@@ -24,10 +24,10 @@ export default {
      */
     Vue.filter('formatDate', function ( num, type ) {
 
-      if (typeof Number(num) !== 'number') return
+      if (typeof Number(num) !== 'number') return num
 
-      let changedDate = ''
-      let nTime = 0
+      let rslt = ''
+      let int = 0
       num *= 1000
 
       const now = (new Date).getTime()
@@ -41,35 +41,35 @@ export default {
         const M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-'
         const D = date.getDate() + ' '
         
-        changedDate = Y + M + D
+        rslt = Y + M + D
 
         if ( type === 'normal') {
           const h = date.getHours() + ':'
           const m = date.getMinutes() + ':'
           const s = date.getSeconds()
 
-          changedDate = changedDate + h + m + s
+          rslt = rslt + h + m + s
         }
       }else{
         // 转化时间戳: n分钟前
         if( time >= 0 && time < 60 ){ 
-          changedDate = '刚刚'
+          rslt = '刚刚'
         }
         else if ( time >= 60 && time < 3600 ){ 
-          nTime = parseInt( time/60 )
-          changedDate = `${nTime} 分钟前`
+          int = parseInt( time/60 )
+          rslt = `${int} 分钟前`
         } 
         else if ( time >= 3600 && time < 86400 ){ 
-          nTime = parseInt( time/3600 )
-          changedDate = `${nTime} 小时前` 
+          int = parseInt( time/3600 )
+          rslt = `${int} 小时前` 
         } 
         else{ 
-          nTime = parseInt( time/86400 )
-          changedDate = `${nTime} 天前` 
+          int = parseInt( time/86400 )
+          rslt = `${int} 天前` 
         }
       }
 
-      return changedDate
+      return rslt
     })
 
 

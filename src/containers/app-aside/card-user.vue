@@ -6,15 +6,15 @@
     <ul class="flex-around">
       <li class="flex-column-center">
         <span>Topic</span>
-        <span>{{ topic }}</span>
+        <span>{{ topic | formatNum }}</span>
       </li>
       <li class="flex-column-center">
         <span>Follower</span>
-        <span>{{ follower }}</span>
+        <span>{{ follower | formatNum }}</span>
       </li>
       <li class="flex-column-center">
         <span>approval</span>
-        <span>{{ approval }}</span>
+        <span>{{ approval | formatNum }}</span>
       </li>
     </ul>
   </div>
@@ -32,19 +32,13 @@
         return this.$store.state.avatar
       },
       topic() {
-        return this.valueBirefly( this.$store.state.topic )
+        return this.$store.state.topic
       },
       follower() {
-        return this.valueBirefly( this.$store.state.follower )
+        return this.$store.state.follower
       },
       approval() {
-        return this.valueBirefly( this.$store.state.approval )
-      }
-    },
-    methods: {
-      // 数值简化
-      valueBirefly( value ) {
-        return this.$store.getters._global_valueBirefly( value )
+        return this.$store.state.approval
       }
     }
   }
