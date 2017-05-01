@@ -3,9 +3,9 @@
     <div class="panel-note shadow-on">
       <h2 class="title">信息通知</h2>
       <ul class="flex-padding-column">
-        <li v-for="item in data">
+        <li v-for="item in data" >
           {{ item.built | formatDate }}
-          <template v-if=" item.type === 'sharingsApply'">
+          <template v-if=" item.type === 'sharingsApply' ">
             <router-link :to="{ name:'user', params:{ user:Number(item.fuid)} }"
                           class="pointer"
                           tag="span">

@@ -34,6 +34,15 @@
             </router-link>
             的新分享
           </template>
+          <template v-if="item.type === 'apply'">
+            参与了
+            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                       class="pointer"
+                       tag="span">
+              《{{ item.extra.title }}》
+            </router-link>
+            的分享
+          </template>
         </li>
       </ul>
     </div>
