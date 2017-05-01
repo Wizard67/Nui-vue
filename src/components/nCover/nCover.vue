@@ -1,6 +1,6 @@
 <template>
   <router-link v-if="link"
-              :to="{ name:target, params:{sid: id} }"
+              :to="{ name:target, params:{[target]: id} }"
               :src="src"
               class="cover pointer"
               tag="img"/>

@@ -1,5 +1,4 @@
 import $ajax from '@/axios'
-import $router from '@/router'
 
 const state = {
   inf:{
@@ -10,7 +9,15 @@ const state = {
     // introduce: ''
   },
   active:{
-
+    // uid: 1,
+    // aid: 1,
+    // type: '',
+    // url: '',
+    // param: 1,
+    // built: 1000000000,
+    // extra: {
+    //   if (type = 'steps || sharings') => title:''
+    // }
   }
 }
 

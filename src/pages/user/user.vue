@@ -15,8 +15,25 @@
     <div class="panel-note shadow-on">
       <ul class="flex-padding-column">
         <li v-for="item in dataActive">
-          {{ item.built | formatDate }} {{ item.username }} 
-          <router-link :to="{name:'',params:{}} " >{{ item.content }}</router-link>
+          {{ item.built | formatDate }}
+          <template v-if="item.type === 'steps'">
+            在分享
+            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                       class="pointer"
+                       tag="span">
+             《{{ item.extra.title }}》
+            </router-link>
+            中发布了新的内容
+          </template>
+          <template v-if="item.type === 'sharings'">
+            创建了
+            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                       class="pointer"
+                       tag="span">
+              《{{ item.extra.title }}》
+            </router-link>
+            的新分享
+          </template>
         </li>
       </ul>
     </div>
@@ -34,7 +51,7 @@
       }
     },
     mounted(){
-      const uid = (this.$route.params.uid)?this.$route.params.uid:0
+      const uid = (this.$route.params.user)?this.$route.params.user:0
       this.$store.dispatch( '_user_getAbout', uid )
     }
   }

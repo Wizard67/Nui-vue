@@ -29,12 +29,9 @@
               link />
           </li>
           <li class="flex-hang">
-            <nIcons
-              v-for="(item,key) in datas"
-              :type="key"
-              :key="key" >
-              {{ item }}
-            </nIcons>
+            <nIcons :type="'date'">{{ date | formatDate }}</nIcons>
+            <nIcons :type="'hearts'">{{ hearts }}</nIcons>
+            <nIcons :type="'items'">{{ items }}</nIcons>
           </li>
         </ul>
       </li>
@@ -51,17 +48,6 @@
 
   export default {
     name: 'panel-sharing',
-    data(){
-      return {
-        datas: {
-          date: this.dateChange(Number(this.$props.date)),
-          // views: this.$props.views,
-          hearts: Number(this.$props.hearts),
-          // comments: this.$props.comments,
-          items: Number(this.$props.items)     
-        }
-      }
-    },
     props: {
       sid:{
         required: true
@@ -94,12 +80,6 @@
       nContent,
       nUsers,
       nIcons
-    },
-    methods: {
-      // 日期格式化
-      dateChange( value ) {
-        return this.$store.getters._global_dateChange( value )
-      }
     }
   }
 </script>

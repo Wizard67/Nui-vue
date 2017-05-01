@@ -1,7 +1,7 @@
 <template>
   <h2 class="title">
     <template v-if="link">
-      <router-link :to="{ name:target, params:{sid: id} }">
+      <router-link :to="{ name:target, params:{[target]: id} }">
         <slot></slot>
       </router-link>
     </template>

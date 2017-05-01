@@ -39,7 +39,7 @@
       submitData(){
         // 获取表单数据
         const value = {
-          sid: this.$route.params.sid,
+          sid: this.$route.params.steps,
           content: this.content
         }
 

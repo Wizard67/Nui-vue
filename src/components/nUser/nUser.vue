@@ -2,7 +2,7 @@
   <div class="user">
     <ul class="flex-star-padding">
       <li>
-        <router-link v-if="link" :to="{ name:target, params:{uid: id} }" class="avatar shadow-btn" :src="src" tag="img"/>
+        <router-link v-if="link" :to="{ name:target, params:{[target]: id} }" class="avatar shadow-btn" :src="src" tag="img"/>
         <img v-else class="avatar shadow-btn" :src="src">
       </li>
       <li class="flex-column-padding">

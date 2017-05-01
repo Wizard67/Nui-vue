@@ -6,17 +6,19 @@ const getters = {
 
 }
 
-const actions = {
-
-}
-
 const mutations = {
 
 }
 
+const actions = {
+
+}
+
+
+
 export default {
   state,
   getters,
-  actions,
-  mutations
+  mutations,
+  actions
 }

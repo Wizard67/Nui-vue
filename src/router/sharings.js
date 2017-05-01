@@ -12,7 +12,7 @@ import stepsComments from '@/pages/sharings/steps/steps-comments'
 
 export default {
 
-  path: '/sharings/:id(\\d+)?',
+  path: '/sharings/:sharings(\\d+)?',
   meta: {
     pin: true,
     marks: ['分享', 'Sharings']
@@ -37,7 +37,7 @@ export default {
     },
 
     { 
-      path: 'steps/:sid(\\d+)',
+      path: 'steps/:steps(\\d+)',
       meta: {
         pin: false,
         marks: ['步骤', 'Steps']

@@ -7,7 +7,6 @@ import home from '@/pages/home/home'
 import schedules from '@/pages/home/schedules'
 import bookmarks from '@/pages/home/bookmarks'
 import favorites from '@/pages/home/favorites'
-import messages from '@/pages/home/messages'
 
 export default {
 
@@ -68,16 +67,7 @@ export default {
         marks: ['收藏夹', 'Favorites']
       },
       component: favorites
-    },
-
-    {
-      path: 'messages',
-      name: 'messages',
-      meta: {
-        pin: false,
-        marks: ['消息盒子', 'Messages']
-      },
-      component: messages
     }
+
   ]
 }

@@ -26,7 +26,7 @@
       }
     },
     mounted(){
-      const sid = this.$route.params.sid
+      const sid = this.$route.params.steps
       this.$store.dispatch( '_steps_getSteps', sid)
     }
   }

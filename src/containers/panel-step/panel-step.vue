@@ -1,6 +1,6 @@
 <template>
   <div class="panel-step">
-    <div class="icons">{{ builtDate }}</div>
+    <div class="icons">{{ built | formatDate('normal') }}</div>
     <div class="panel-note shadow-on">
       <ul class="flex-column">
         <li class="flex-hang-padding">
@@ -18,12 +18,8 @@
           </nContent>
         </li>
         <li class="flex-end-hang-padding">
-          <nIcons
-            v-for="(item,key) in datas"
-            :type="key"
-            :key="key" >
-            {{ item }}
-          </nIcons>        
+          <nIcons :type="'date'">{{ date | formatDate }}</nIcons>
+          <nIcons :type="'time'">{{ time }}</nIcons>
         </li>
       </ul>
     </div>
@@ -38,15 +34,6 @@
 
   export default {
     name: 'panel-step',
-    data(){
-      return {
-        datas: {
-          date: this.dateChange(Number(this.$props.date)),
-          time: Number(this.$props.time)
-        },
-        builtDate: this.dateChange(Number(this.$props.built), 'only')
-      }
-    },
     props: {
       nid: {
         required: true
@@ -67,12 +54,6 @@
       nUsers,
       nContent,
       nIcons
-    },
-    methods: {
-      // 日期格式化
-      dateChange( value, type ) {
-        return this.$store.getters._global_dateChange( value, type )
-      }
     }
   }
 </script>

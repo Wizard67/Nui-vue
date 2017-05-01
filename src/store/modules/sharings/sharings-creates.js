@@ -25,7 +25,7 @@ const actions = {
         if ( res.data.inf ) {
 
           // url 跳转至分享内容页面
-          $router.push( {name:'steps', params:{sid: res.data.val }})
+          $router.push( {name:'steps', params:{steps: res.data.val }})
 
         }else{
           console.log('sorry')

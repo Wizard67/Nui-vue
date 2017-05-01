@@ -4,12 +4,13 @@
 import pageDefault from '@/pages/helper/page-default'
 
 import user from '@/pages/user/user'
+import messages from '@/pages/user/messages'
 import register from '@/pages/user/register'
 import login from '@/pages/user/login'
 
 export default {
 
-  path: '/user/:uid(\\d+|my)?',
+  path: '/user/:user(\\d+)?',
   meta: {
     pin: false,
     auth: true,
@@ -25,6 +26,16 @@ export default {
         auth: true
       },
       component: user
+    },
+
+    {
+      path: 'messages',
+      name: 'messages',
+      meta: {
+        pin: true,
+        marks: ['信息', 'Messages']
+      },
+      component: messages
     },
 
     {
