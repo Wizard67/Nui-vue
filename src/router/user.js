@@ -5,6 +5,7 @@ import pageDefault from '@/pages/helper/page-default'
 
 import user from '@/pages/user/user'
 import messages from '@/pages/user/messages'
+import favorites from '@/pages/user/favorites'
 import register from '@/pages/user/register'
 import login from '@/pages/user/login'
 
@@ -36,6 +37,16 @@ export default {
         marks: ['信息', 'Messages']
       },
       component: messages
+    },
+
+    {
+      path: 'favorites',
+      name: 'favorites',
+      meta: {
+        pin: true,
+        marks: ['收藏', 'Favorites']
+      },
+      component: favorites
     },
 
     {

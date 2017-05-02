@@ -8,6 +8,7 @@ import actions from './actions'
 
 import user from './modules/user/user'
 import messages from './modules/user/messages'
+import favorites from './modules/user/favorites'
 import login from './modules/user/login'
 import register from './modules/user/register'
 
@@ -28,6 +29,7 @@ export default new Vuex.Store({
   modules: {
     user,
     messages,
+    favorites,
     login,
     register,
   

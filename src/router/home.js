@@ -59,15 +59,15 @@ export default {
       ]
     },
 
-    {
-      path: 'favorites',
-      name: 'favorites',
-      meta: {
-        pin: false,
-        marks: ['收藏夹', 'Favorites']
-      },
-      component: favorites
-    }
+    // {
+    //   path: 'favorites',
+    //   name: 'favorites',
+    //   meta: {
+    //     pin: false,
+    //     marks: ['收藏夹', 'Favorites']
+    //   },
+    //   component: favorites
+    // }
 
   ]
 }

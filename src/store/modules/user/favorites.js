@@ -24,20 +24,20 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  _user_changMessages( state, value ){
+  _user_changFavorites( state, value ){
     state.list = value
   },
 }
 
 const actions = {
   /**
-   * 获取用户通知消息
+   * 获取用户收藏信息
    * @param  {Function} options.commit
    */
-  _user_getMessages( {commit} ){
+  _user_getFavorites( {commit} ){
 
     // 发送 ajax 请求
-    $ajax.get( `get/messages/` )
+    $ajax.get( `/get/favorites/` )
       .then((res) => {
         const datas = res.data
 
@@ -45,29 +45,7 @@ const actions = {
         if ( datas.inf ) {
 
           // 添加数据到 state
-          commit( '_user_changMessages', datas.val )
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  },
-
-  /**
-   * 处理用户参与分享的请求
-   * @param  {Number} $result
-   */
-  _user_sharingsResult( {commit}, params ){
-    // 发送 ajax 请求
-    $ajax.get( `post/sharingsResult/${params[0]}/${params[1]}` )
-      .then((res) => {
-        console.log(res)
-        
-        const datas = res.data
-
-        // 成功获取到数据
-        if ( datas.inf ) {
-
+          commit( '_user_changFavorites', datas.val )
         }
       })
       .catch((err) => {
@@ -76,9 +54,11 @@ const actions = {
   }
 }
 
+
+
 export default {
   state,
   getters,
-  actions,
-  mutations
+  mutations,
+  actions
 }
