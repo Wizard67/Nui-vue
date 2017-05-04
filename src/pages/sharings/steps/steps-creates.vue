@@ -6,11 +6,6 @@
 
        <div class="input-group">
          <span class="lamp"></span>
-         <input type="text" v-model="users" placeholder="创作人">
-       </div>
-
-       <div class="input-group">
-         <span class="lamp"></span>
          <textarea v-model="content" placeholder="内容"></textarea>
        </div>
 
@@ -31,7 +26,6 @@
   export default {
     data(){
       return {
-        users: '',
         content: ''
       }
     },

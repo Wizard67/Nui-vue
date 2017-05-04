@@ -7,13 +7,17 @@
 button {
   min-width: 5.2rem;
   padding: 0 1rem;
-  margin: 1rem;
+  
   background-color: white;
 
   cursor: pointer;
 }
 
 form {
+  button {
+    margin: 1rem;
+  }
+
   div.input-group {
     display: flex;
 

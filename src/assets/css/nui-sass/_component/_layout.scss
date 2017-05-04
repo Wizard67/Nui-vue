@@ -144,10 +144,29 @@ main {
     width: 1008px;
     margin: 0 auto;
   }
+
   & > header {
     flex: none;
+    
+    height: 64px;
+
+    position: fixed;
+    width: calc(100% - 280px);
 
     background-color: white;
+    
+    z-index: 600;
+
+    transition: transform .25s ease-in-out;
+    will-change: transform;
+
+    &.show {
+      transform: translateY(0);
+    }
+    &.hidden {
+      transform: translateY(-100%);
+    }
+
     div.header-centent {
       display: flex;
       justify-content: space-between;
@@ -170,11 +189,18 @@ main {
     button.toggle-helper {
       visibility: hidden;
     }
+
+    @include _media( "lg" ){
+      width: 100%;
+    }
   }
+
   & > article {
     flex-flow: row wrap;
 
     justify-content: space-between;
+
+    margin-top: 64px;
   }
 
   @include _media( "lg" ){
