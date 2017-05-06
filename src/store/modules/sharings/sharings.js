@@ -52,6 +52,11 @@ const actions = {
 
           // 添加数据到 state
           commit( '_sharings_changList', datas.val )
+          // 进行通知
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+        }else{
+          // 进行通知
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
       })
       .catch((err) => {

@@ -84,14 +84,7 @@ export default {
 
     Vue.directive('throttle',{
       bind: (el, binding, vnode, oldVnode) => {
-        console.log(vnode)
-        el.addEventListener('click', this._throttle(binding.value,1000))
-      }
-    })
-
-    Vue.directive('debounce',{
-      bind: (el, binding, vnode, oldVnode) => {
-        el.lem.addEventListener('click', this._debounce(binding.value,500))
+        el.addEventListener('click', this._throttle(binding.value,2000))
       }
     })
 
@@ -184,6 +177,7 @@ export default {
     Vue.prototype.throttle = (func, wait) => {
       return this._throttle(func, wait)
     }
+
   }
 
 }

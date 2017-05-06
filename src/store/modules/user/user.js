@@ -62,15 +62,21 @@ const actions = {
         const active = res[1].data
 
         if ( inf.inf ) {
-          console.log(inf)
+          // 进行通知
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
           commit( '_user_changInf', inf.val )
         }else{
-          console.log('sorry')
+          // 进行通知
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
         
         if ( active.inf ) {
-          console.log(active)
+          // 进行通知
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
           commit( '_user_changActive', active.val )
+        }else{
+          // 进行通知
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
       })
       .catch((err) => {

@@ -1,5 +1,16 @@
 export default {
   /**
+   * 修改全局提示信息
+   * @param  {Object} value
+   */
+  _global_changeMessage( state, value ){
+    state.message = {
+      type: value.type,
+      content: value.content
+    }
+  },
+
+  /**
    * 更改用户头像信息
    * @param  {String} value
    */

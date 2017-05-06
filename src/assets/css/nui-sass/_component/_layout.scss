@@ -138,6 +138,7 @@ main {
   padding-left: 280px;
 
   & > header div.tool,
+  & > header div.message,
   & > article {
     flex: 0 1 auto;
 
@@ -217,6 +218,7 @@ main {
           min-width: unset;
         }
       }
+      & > header div.message,
       & > article {
         width: 96%;
         min-width: 960px;
@@ -225,6 +227,7 @@ main {
     }
   }
   @include _media( "md" ){
+    & > header div.message,
     & > article {
       width: 60%;
       min-width: 656px;
@@ -232,6 +235,7 @@ main {
     }
   }
   @include _media( "sm" ){
+    & > header div.message,
     & > article {
       flex-flow: column nowrap;
 
@@ -241,6 +245,7 @@ main {
     }
   }
   @include _media( "xs" ){
+    & > header div.message,
     & > article {
       width: 92%;
       min-width: 330px;

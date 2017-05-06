@@ -39,9 +39,12 @@ const actions = {
 
           // url 跳转
           // $router.push({name:'home'})
+          // 进行通知
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
 
         }else{
-          console.log('sorry')
+          // 进行通知
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
       })
       .catch((err) => {

@@ -26,12 +26,14 @@ const actions = {
         console.log(res)
         // 判断是否登录成功
         if ( res.data.inf ) {
-
+          // 进行通知
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
           // url 跳转
           $router.push({name:'login'})
 
         }else{
-          console.log('sorry')
+          // 进行通知
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
       })
       .catch((err) => {

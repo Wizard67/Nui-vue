@@ -19,15 +19,17 @@ const actions = {
     // 发送 ajax 请求
     $ajax.post( 'post/stepCreates', params )
       .then((res) => {
-        console.log(res)
+        const datas = res.data
         // 判断是否创建成功
-        if ( res.data.inf ) {
-
+        if ( datas.inf ) {
+          // 进行通知
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
           // url 跳转至分享步骤页面
           $router.push( {name:'steps', params:{sid: res.data.val }})
 
         }else{
-          console.log('sorry')
+          // 进行通知
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
       })
       .catch((err) => {

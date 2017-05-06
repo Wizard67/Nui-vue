@@ -2,33 +2,34 @@
   <article>
     <div class="panel-form shadow-on">
       <h2 class="title">注册账户</h2>
-      <form>
-        <div class="input-group">
-          <span class="lamp"></span>
-          <input type="text" v-model="account" placeholder="email@email.com">
-        </div>
+      <nForm>
+        <nInput :name="'test'"
+                :type="'email'"
+                :placeholder="'email@email.com'"
 
-        <div class="input-group">
-          <span class="lamp"></span>
-          <input type="password" v-model="password" placeholder="password">
-        </div>
+                v-model="account">
+        </nInput>
+        <nInput :name="'test1'"
+                :type="'password'"
+                :placeholder="'password'"
 
-        <div class="input-group">
-          <span class="lamp"></span>
-          <input type="password" placeholder="password">
-        </div>
+                v-model="password">
+        </nInput>
 
         <ul class="flex-end">
           <li>
             <button @click.prevent="submitData" type="submit" class="shadow-btn">Sign up</button>
           </li>
         </ul>
-      </form>
+      </nForm>
+      {{account}}
+      
     </div>
   </article>
 </template>
 
 <script>
+  import nForm from '@/components/nForm'
 
   export default {
     data(){
@@ -37,8 +38,15 @@
         password: ''
       }
     },
+    watch: {
+      error(newVal){
+        alert('change')
+      }
+    },
     methods: {
       submitData(){
+        alert('nihaio')
+        return
         // 获取表单数据
         const value = {
           account: this.account,
@@ -50,7 +58,7 @@
       }
     },
     components: {
-      
+      ...nForm
     }
   }
 </script>

@@ -1,5 +1,13 @@
 export default {
   /**
+   * 全局提示信息
+   * @type {[type]}
+   */
+  message: {
+    type:'',
+    content: ''
+  },
+  /**
    * 用户头像信息
    * @type {String}
    */

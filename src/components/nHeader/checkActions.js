@@ -6,7 +6,7 @@ function checkActions (states) {
 
   // Begining, at the top and not fixed.
   if (
-    states.currentScrollY <= states.pinStart &&
+    states.currentScrollY <= 0 &&
     states.state !== 'unfixed'
   ) {
     action = 'unfix'
@@ -24,8 +24,8 @@ function checkActions (states) {
   } else if (
     direction === 'down' &&
     ['pinned', 'unfixed'].indexOf(states.state) >= 0 &&
-    states.currentScrollY > (states.elemHeight + states.pinStart) &&
-    distanceScrolled > states.downTolerance
+    states.currentScrollY > (states.elemHeight + 0) &&
+    distanceScrolled > 0
   ) {
     action = 'unpin'
 
@@ -33,7 +33,7 @@ function checkActions (states) {
   // Pin the header.
   } else if (
     direction === 'up' &&
-    distanceScrolled > states.upTolerance &&
+    distanceScrolled > 5 &&
     ['pinned', 'unfixed'].indexOf(states.state) < 0
   ) {
     action = 'pin'

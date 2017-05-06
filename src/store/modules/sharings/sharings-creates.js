@@ -19,16 +19,17 @@ const actions = {
     // 发送 ajax 请求
     $ajax.post( 'post/sharingsCreates', params )
       .then((res) => {
-
-        console.log(res)
         // 判断是否创建成功
         if ( res.data.inf ) {
 
+          // 进行通知
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
           // url 跳转至分享内容页面
           $router.push( {name:'steps', params:{steps: res.data.val }})
 
         }else{
-          console.log('sorry')
+          // 进行通知
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
       })
       .catch((err) => {
