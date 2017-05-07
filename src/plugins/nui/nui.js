@@ -178,6 +178,14 @@ export default {
       return this._throttle(func, wait)
     }
 
+    /**
+     * 消息通知
+     * @param  {Object} $this
+     * @return
+     */
+    Vue.prototype.$message = ($this, type, content) =>{
+      $this.$store.commit('_global_changeMessage',{ type:type, content:content })
+    }
   }
 
 }

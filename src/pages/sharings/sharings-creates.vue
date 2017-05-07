@@ -2,55 +2,63 @@
   <article>
    <div class="panel-form shadow-on">
      <nTitle>创建分享</nTitle>
-     <form>
+     <nForm>
+        <nInput :name="'cover'"
+                :type="'picture'"
+                :size="{ width: '280', height: '216'}"
+                :placeholder="'选择封面'"
 
-       <div class="input-group">
-         <span class="lamp"></span>
-         <input type="text" v-model="title" placeholder="标题">
-       </div>
+                v-model="cover">
+        </nInput>
 
-       <div class="input-group">
-         <span class="lamp"></span>
-         <textarea v-model="summary" placeholder="介绍"></textarea>
-       </div>
+        <nInput :name="'title'"
+                :type="'title'"
+                :placeholder="'标题'"
 
-       <div class="input-group">
-         <span class="lamp"></span>
-         <input type="file" id="f1">
-         <label for="f1" class="shadow-btn">选择封面</label>
-       </div>
+                v-model="title">
+        </nInput>
 
-       <ul class="flex-end">
-         <li>
-           <button @click.prevent="submitData" type="submit" class="shadow-btn">Create</button>
-         </li>
-       </ul>
-     </form>
+        <nInput :name="'summary'"
+                :type="'summary'"
+                :placeholder="'介绍'"
+
+                v-model="summary">
+        </nInput>
+        <!-- <canvas id="canvas"></canvas> -->
+        <nButton slot="right"
+                 v-throttle="submitData">Create
+        </nButton>
+
+     </nForm>
+
    </div>
   </article>
 </template>
 
 <script>
   import nTitle from '@/components/nTitle'
-  // import nInput from '@/components/nInput'
+  import nForm from '@/components/nForm'
+  import nButton from '@/components/nButton'
 
   export default {
     data(){
       return {
         title: '',
         summary: '',
-        cover: '/static/pictures/sharing.jpg'
+        cover: ''
       }
     },
     methods: {
       submitData(){
 
         // 获取表单数据
-        const value = {
-          title: this.title,
-          summary: this.summary,
-          cover: this.cover
+        for(let item in this.$data) {
+          if ( !this.$data[item] ) {
+            return this.$message(this,'error','请将表单填写完整')
+          }
         }
+
+        const value = {...this.$data}
 
         // 提交数据
         this.$store.dispatch( '_sharingsCreates_addSharing', value )
@@ -58,7 +66,8 @@
     },
     components: {
       nTitle,
-      // nInput
+      ...nForm,
+      nButton
     }
   }
 </script>

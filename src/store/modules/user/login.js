@@ -23,32 +23,28 @@ const actions = {
     // 发送 ajax 请求
     $ajax.post( 'post/login', params )
       .then((res) => {
-        console.log(res)
+        let data = res.data
         // 判断是否登录成功
-        if ( res.data.inf ) {
+        if ( data.inf ) {
 
           // 处理数据
-          let data = res.data.val
+          localStorage.uid = data.val.uid
+          localStorage.rank = data.val.rank
+          localStorage.username = data.val.username
+          localStorage.avatar = data.val.avatar
 
-          localStorage.uid = data.uid
-          localStorage.rank = data.rank
-          localStorage.username = data.username
-          localStorage.avatar = data.avatar
+          commit( '_global_changeAvatar', data.val.avatar )
 
-          commit( '_global_changeAvatar', data.avatar )
-
+          commit( '_global_changeMessage', { type:'success', content: data.meg} )
           // url 跳转
           // $router.push({name:'home'})
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
 
         }else{
-          // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+          commit( '_global_changeMessage', { type:'error', content: data.meg} )
         }
       })
       .catch((err) => {
-        console.log(err)
+        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
       })
   }
 }

@@ -127,7 +127,7 @@ form {
     input[type = "file"] {
 
       ~ label[for] {
-
+        background-color: $color-light;
       }
 
     }

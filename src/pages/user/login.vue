@@ -1,32 +1,38 @@
 <template>
   <article>
     <div class="panel-form shadow-on">
-      <h2 class="title">用户登录</h2>
-      <form>
-        <div class="input-group">
-          <span class="lamp"></span>
-          <input type="text" v-model="account" placeholder="email@email.com">
-        </div>
+      <nTitle>用户登录</nTitle>
+      <nForm>
+        <nInput :name="'email'"
+                :type="'email'"
+                :placeholder="'email@email.com'"
 
-        <div class="input-group">
-          <span class="lamp"></span>
-          <input type="password" v-model="password" placeholder="password">
-        </div>
+                v-model="account">
+        </nInput>
+        <nInput :name="'password'"
+                :type="'password'"
+                :placeholder="'password'"
 
-        <ul class="flex-between">
-          <li>
-            <router-link :to="{name:'register'}" class="shadow-btn" tag="button">注册</router-link>
-          </li>
-          <li>
-            <button @click.prevent="submitData" type="submit" class="shadow-btn">Sign in</button>
-          </li>
-        </ul>
-      </form>
+                v-model="password">
+        </nInput>
+
+        <router-link slot="right"
+                     :to="{name:'register'}" class="shadow-btn" tag="button" type="button">注册
+        </router-link>
+
+        <nButton slot="right"
+                 v-throttle="submitData">Sign in
+        </nButton>
+      </nForm>
     </div>   
   </article>
 </template>
 
 <script>
+  import nTitle from '@/components/nTitle'
+  import nForm from '@/components/nForm'
+  import nButton from '@/components/nButton'
+
   export default {
     data(){
       return {
@@ -36,18 +42,23 @@
     },
     methods: {
       submitData(){
-        // 获取表单数据
-        const value = {
-          account: this.account,
-          password: this.password
+
+        for(let item in this.$data) {
+          if ( !this.$data[item] ) {
+            return this.$message(this,'error','请将表单填写完整')
+          }
         }
+
+        const value = {...this.$data}
 
         // 提交数据
         this.$store.dispatch( '_login_checkAccount', value )
       }
     },
     components: {
-
+      nTitle,
+      ...nForm,
+      nButton
     }
   }
 </script>

@@ -23,21 +23,20 @@ const actions = {
     // 发送 ajax 请求
     $ajax.post( 'post/register', params )
       .then((res) => {
-        console.log(res)
+        let data = res.data
         // 判断是否登录成功
-        if ( res.data.inf ) {
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+        if ( data.inf ) {
+
+          commit( '_global_changeMessage', { type:'success', content: data.meg} )
           // url 跳转
           $router.push({name:'login'})
 
         }else{
-          // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+          commit( '_global_changeMessage', { type:'error', content: data.meg} )
         }
       })
       .catch((err) => {
-        console.log(err)
+        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
       })
   }
 }

@@ -1,13 +1,6 @@
 <template>
   <div class="input-group">
-    <!-- input's type is email -->
-    <template v-if="type === 'email'">
-      <span class="lamp" :class="lampClass"></span>
-      <input type="text" :name="name" :placeholder="placeholder"
-             v-model="value"
-             @focus="focus" @blur="blur">      
-    </template>
-    
+
     <!-- input's type is password -->
     <template v-if="type === 'password'">
       <span class="lamp" :class="lampClass"></span>
@@ -15,6 +8,25 @@
              v-model="value"
              @focus="focus" @blur="blur">
     </template>
+    
+    <!-- input's type is file -->
+    <template v-else-if="type === 'picture'">
+      <span class="lamp" :class="lampClass"></span>
+      <input type="file" :name="name" :id="name"
+             @change="change">
+      <label :for="name">
+        {{ placeholder }}
+      </label>
+    </template>
+
+    <!-- input's type is text -->
+    <template v-else>
+      <span class="lamp" :class="lampClass"></span>
+      <input type="text" :name="name" :placeholder="placeholder"
+             v-model="value"
+             @focus="focus" @blur="blur">      
+    </template>
+    
 
   </div>
 </template>
@@ -30,7 +42,13 @@
         state: 'none',
         reg: {
           ...rule
-        }
+        },
+
+        hasAllowFile: false,
+        sizeMax: 1024,
+        file: '',
+        labelStyle: ''
+        
       }
     },
     props: {
@@ -44,6 +62,18 @@
       },
       placeholder: {
         type: String
+      },
+      size: {
+        type: Object,
+        default() {
+          return {width: '100%',height: '50%'}
+        }
+      }
+    },
+    mounted(){
+      if ( this.type === 'picture') {
+        // set the picture's size
+        this.setPictureSize()
       }
     },
     computed: {
@@ -56,6 +86,7 @@
       }
     },
     methods:{
+      // just text input
       focus(){
         if ( this.state === 'none') {
           this.state = 'focus'
@@ -69,13 +100,82 @@
       test(rule){
         if ( !this.reg[rule]['rule'].test(this.value) ){
           this.state = 'error'
-          // 触发信息通知
-          this.$store.commit('_global_changeMessage',{ type:this.state, content:this.reg[rule]['message'] })
+          this.$message(this, this.state, this.reg[rule]['message'])
+          // clear this input value at father-component
+          this.$emit('input', '')
         }else{
           this.state = 'success'
-          // 将正确结果返回父级
+          // emit the right value
           this.$emit('input', event.target.value)
         }
+      },
+      // file input
+      change(event){
+        this.cleanInf()
+
+        this.file = event.target.files[0]
+        if ( !this.file ) {
+          this.state = 'error'
+          this.$message( this, 'erroe', '请选择一张封面图片' )
+        }
+
+        this.checkFileInf()
+
+        this.handlePicture()
+        this.showPicture()
+      },
+      cleanInf(){
+        this.file = ''
+        this.labelStyle.backgroundImage = ''
+      },
+      setPictureSize(){
+        this.labelStyle = this.$el.getElementsByTagName('label')[0].style
+        this.labelStyle.width = this.size.width+'px'
+        this.labelStyle.height = this.size.height+'px'
+      },
+      checkFileInf(){
+        this.hasAllowFile = /^[image]\w+/.test(this.file.type)
+
+        if ( !this.hasAllowFile ) {
+          this.state = 'error'
+          this.$message(this, 'error', '请选择图片文件')
+        }
+        if ( (this.file.size/1024) > this.sizeMax ) {
+          this.state = 'error'
+          this.$message(this, 'erroe', `上传图片大小不超过 ${this.sizeMax/1024} M`)
+        }
+      },
+      handlePicture(){
+        let newImgDate = ''
+        let reader = new FileReader()
+        reader.readAsDataURL(this.file)
+        reader.onload = (event) => {
+
+          const result = event.target.result
+          let image = new Image()
+          image.src = result
+
+          image.onload = () => {
+            const canvas = document.createElement('canvas')
+
+            canvas.width = this.size.width
+            canvas.height = this.size.height
+
+            let ctx = canvas.getContext('2d')
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+            this.value = canvas.toDataURL(this.file.type, 0.8)
+
+            this.showPicture()
+          }
+        }
+      },
+      showPicture(){
+          this.labelStyle.backgroundSize = '100%'
+          this.labelStyle.backgroundImage = `url(${this.value})`
+          this.labelStyle.backgroundRepeat = 'no-repeat'
+
+          this.state = 'success'
+          this.$emit('input', this.value)
       }
     }
   }
