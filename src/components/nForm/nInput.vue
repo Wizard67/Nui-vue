@@ -117,6 +117,7 @@
         if ( !this.file ) {
           this.state = 'error'
           this.$message( this, 'erroe', '请选择一张封面图片' )
+          return
         }
 
         this.checkFileInf()

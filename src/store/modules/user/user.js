@@ -63,20 +63,20 @@ const actions = {
 
         if ( inf.inf ) {
           // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+          commit( '_global_changeMessage', { type:'success', content: inf.meg} )
           commit( '_user_changInf', inf.val )
         }else{
           // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+          commit( '_global_changeMessage', { type:'error', content: inf.meg} )
         }
         
         if ( active.inf ) {
           // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+          commit( '_global_changeMessage', { type:'success', content: active.meg} )
           commit( '_user_changActive', active.val )
         }else{
           // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+          commit( '_global_changeMessage', { type:'error', content: active.meg} )
         }
       })
       .catch((err) => {

@@ -58,10 +58,15 @@
           }
         }
 
-        const value = {...this.$data}
+        this.$store.dispatch( '_global_putPicture', this.cover )
+        .then((res) => {
+          this.cover = res
+          const value = {...this.$data}
 
-        // 提交数据
-        this.$store.dispatch( '_sharingsCreates_addSharing', value )
+          // 提交数据
+          this.$store.dispatch( '_sharingsCreates_addSharing', value )
+        })
+
       }
     },
     components: {

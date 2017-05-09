@@ -16,23 +16,7 @@ const mutations = {
 const actions = {
   // 获取表单数据
   _sharingsCreates_addSharing( { commit, rootGetters: {_global_valueIntoForm} }, value){
-    
-    // 上传图片至图库
-    console.log(value.cover)
 
-    // 获取上传 token
-    $ajax.get( 'get/getQnToken' )
-      .then((res) => {
-        let data = res.data
-        if ( data.inf ) {
-
-          const token = data.val
-          alert( token )
-
-        }
-      })
-
-    return
     // 格式化数据
     const params = _global_valueIntoForm(value)
 
