@@ -31,7 +31,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  _user_changInf( state, value ){
+  changInf( state, value ){
     state.inf = value
   },
   /**
@@ -39,7 +39,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  _user_changActive( state, value ){
+  changActive( state, value ){
     state.active = value
   }
 }
@@ -62,9 +62,7 @@ const actions = {
         const active = res[1].data
 
         if ( inf.inf ) {
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: inf.meg} )
-          commit( '_user_changInf', inf.val )
+          commit( 'changInf', inf.val )
         }else{
           // 进行通知
           commit( '_global_changeMessage', { type:'error', content: inf.meg} )
@@ -72,8 +70,7 @@ const actions = {
         
         if ( active.inf ) {
           // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: active.meg} )
-          commit( '_user_changActive', active.val )
+          commit( 'changActive', active.val )
         }else{
           // 进行通知
           commit( '_global_changeMessage', { type:'error', content: active.meg} )

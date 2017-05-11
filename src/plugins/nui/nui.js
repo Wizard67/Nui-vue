@@ -81,10 +81,17 @@ export default {
 
 
   install: function (Vue, options) {
-
+    // directive for throttle
     Vue.directive('throttle',{
       bind: (el, binding, vnode, oldVnode) => {
         el.addEventListener('click', this._throttle(binding.value,2000))
+      }
+    })
+
+    // directive for debounce
+    Vue.directive('debounceInput',{
+      bind: (el, binding, vnode, oldVnode) => {
+        el.addEventListener('input', this._debounce(binding.value,300))
       }
     })
 

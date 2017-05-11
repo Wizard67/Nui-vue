@@ -3,17 +3,13 @@
    <div class="panel-form shadow-on">
      <nTitle>创建步骤</nTitle>
      <form>
+       <mdEditor></mdEditor>
 
-       <div class="input-group">
-         <span class="lamp"></span>
-         <textarea v-model="content" placeholder="内容"></textarea>
-       </div>
-
-       <ul class="flex-end">
+<!--        <ul class="flex-end">
          <li>
            <button @click.prevent="submitData" type="submit" class="shadow-btn">Create</button>
          </li>
-       </ul>
+       </ul> -->
      </form>
    </div>
   </article>
@@ -21,7 +17,7 @@
 
 <script>
   import nTitle from '@/components/nTitle'
-  // import nInput from '@/components/nInput'
+  import mdEditor from '@/containers/md-editor'
 
   export default {
     data(){
@@ -43,7 +39,7 @@
     },
     components: {
       nTitle,
-      // nInput
+      mdEditor
     }
   }
 </script>

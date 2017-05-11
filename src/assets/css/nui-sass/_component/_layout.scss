@@ -4,6 +4,9 @@
 /* updated on 2017-03-30*/
 /**/
 
+* {
+  // outline: 1px red solid;
+}
 aside,
 main,
 main > header,
@@ -148,11 +151,12 @@ main {
 
   & > header {
     flex: none;
+    align-items: center;
     
     height: 64px;
 
     position: fixed;
-    width: calc(100% - 280px);
+    width: calc(100vw - 280px);
 
     background-color: white;
     

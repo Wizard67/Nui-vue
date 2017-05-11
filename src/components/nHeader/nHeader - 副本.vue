@@ -1,7 +1,24 @@
 <template>
   <header :class="type" class="shadow-on">
-    <nTool :isShow="showMessage" :route="route"></nTool>
-    <nMessage :isShow="showMessage">{{ message.content }}</nMessage>
+    <div v-show="!showMessage" class="tool">
+      nihao
+      <template v-if="this.route === 'user1'">
+        <ul class="flex-between">
+          <li>
+            <p>用户信息</p>
+          </li>
+          <li>
+            <button class="shadow-btn">关注</button>
+          </li>
+        </ul>
+      </template>
+    
+     
+    </div>
+
+    <div v-show="showMessage" class="message">
+      {{ message.content }}
+    </div>
   </header>
 </template>
 
@@ -9,7 +26,6 @@
 import raf from 'raf'
 import checkActions from './checkActions'
 import nTool from './nTool'
-import nMessage from './nMessage'
 
 let scrollEvent
 let timer
@@ -25,10 +41,6 @@ export default {
       state: 'pinned',
       showMessage: false
     }
-  },
-  components: {
-    nTool,
-    nMessage
   },
   watch: {
     // 监听当前路由变化

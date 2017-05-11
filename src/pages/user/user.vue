@@ -49,49 +49,7 @@
         </div>
         <div class="icons">{{ item.built | formatDate }}</div>
       </ul>
-
-          
-
-
     </div>
-<!--     <div class="panel-note shadow-on">
-      <ul class="flex-padding-column">
-        <li v-for="item in dataActive">
-          {{ item.built | formatDate }}
-
-          <template v-if="item.type === 'steps'">
-            在分享
-            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                       class="pointer"
-                       tag="span">
-             《{{ item.extra.title }}》
-            </router-link>
-            中发布了新的内容
-          </template>
-
-          <template v-if="item.type === 'sharings'">
-            创建了
-            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                       class="pointer"
-                       tag="span">
-              《{{ item.extra.title }}》
-            </router-link>
-            的新分享
-          </template>
-
-          <template v-if="item.type === 'apply'">
-            参与了
-            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                       class="pointer"
-                       tag="span">
-              《{{ item.extra.title }}》
-            </router-link>
-            的分享
-          </template>
-
-        </li>
-      </ul>
-    </div> -->
   </article>
 </template>
 

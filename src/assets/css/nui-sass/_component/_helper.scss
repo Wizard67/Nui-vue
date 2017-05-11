@@ -85,22 +85,6 @@ h2.title {
   cursor: pointer;
 }
 
-.icon {
-  flex: none;
-
-  min-width: unset;
-  padding: 0;
-  margin: 0 0 0 1rem;
-
-  font-size: 1.2rem;
-  color: $color-deep;
-
-  cursor: pointer;
-  &:active {
-    color: $color-light;
-  }
-}
-
 .icons {
   display: flex;
 

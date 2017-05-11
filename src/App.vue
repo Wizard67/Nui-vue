@@ -2,7 +2,7 @@
   <div id="app">
     <appAside></appAside>
     <main>
-      <headerMessage></headerMessage>
+      <nHeader></nHeader>
       <router-view></router-view>
     </main>
   </div>
@@ -12,12 +12,12 @@
 require('@/assets/css/font-awesome.css')
 
 import appAside from '@/containers/app-aside'
-import headerMessage from '@/containers/header-message'
+import nHeader from '@/components/nHeader'
 
 export default {
   components: {
     appAside,
-    headerMessage
+    nHeader
   }
 }
 </script>

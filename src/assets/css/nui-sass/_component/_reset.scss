@@ -72,8 +72,10 @@ html {
 ::-webkit-scrollbar-corner {background-color: transparent;}
 ::-webkit-scrollbar-thumb {background-color: rgba(0,0,0,.26);box-shadow: inset 1px 1px 0 rgba(0,0,0,.054), inset 0 -1px 0 rgba(0,0,0,.087);transition: all .5s cubic-bezier(.35,0,.25,1);}
 
+
 /**
 * fix 'jumping scrollbar'
+* http://www.zhangxinxu.com/wordpress/2015/01/css-page-scrollbar-toggle-center-no-jumping/
 * https://aykevl.nl/2014/09/fix-jumping-scrollbar
 */
 html {
@@ -88,8 +90,7 @@ html {
 }
 body {
   width: 100vw;
-
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 hr {
@@ -170,5 +171,7 @@ textarea {
 * correct the line-height of font-awesome 
 */
 i.fa {
+  font-size: 1rem;
+  
   line-height: inherit;
 }

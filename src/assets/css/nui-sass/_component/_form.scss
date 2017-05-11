@@ -11,11 +11,32 @@ button {
   background-color: white;
 
   cursor: pointer;
+
+  &.icon {
+    flex: none;
+
+    min-width: unset;
+    padding: 0;
+    margin: 0 0 0 1rem;
+
+    font-size: 1.2rem;
+    color: $color-deep;
+
+    cursor: pointer;
+    &:active {
+      color: $color-light;
+    }
+  }
 }
 
 form {
   button {
     margin: 1rem;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 200px;
   }
 
   div.input-group {
