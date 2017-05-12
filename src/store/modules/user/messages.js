@@ -24,7 +24,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  _user_changMessages( state, value ){
+  changMessages( state, value ){
     state.list = value
   },
 }
@@ -45,9 +45,7 @@ const actions = {
         if ( datas.inf ) {
 
           // 添加数据到 state
-          commit( '_user_changMessages', datas.val )
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+          commit( 'changMessages', datas.val )
         }else{
           // 进行通知
           commit( '_global_changeMessage', { type:'error', content: datas.meg} )

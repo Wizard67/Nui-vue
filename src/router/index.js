@@ -48,40 +48,6 @@ Routers.beforeEach((to, from, next) => {
         })
     }
 
-    if ( to.name === 'join') {
-      // 发送申请参与请求
-      $ajax.post( `post/sharingsApply/${to.params.steps}` )
-        .then((res) => {
-          if ( res.data.inf ) {
-            alert('发送请求成功')
-            $router.push({name:'steps',params:{steps:to.params.steps}})
-          }else{
-            console.log(res)
-            $router.push({name:'steps',params:{steps:to.params.steps}})
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-
-    if ( to.name === 'favorite') {
-      // 发送收藏操作请求
-      $ajax.post( `post/favorites/sharings/${to.params.steps}` )
-        .then((res) => {
-          if ( res.data.inf ) {
-            alert(res.data.meg)
-            $router.push({name:'steps',params:{steps:to.params.steps}})
-          }else{
-            console.log(res)
-            $router.push({name:'steps',params:{steps:to.params.steps}})
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    }
-
     // 判定用户是否拥有浏览权限
     if ( to.meta.auth ) {
         if ( true ) {

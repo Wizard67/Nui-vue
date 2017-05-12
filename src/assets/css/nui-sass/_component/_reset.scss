@@ -67,10 +67,10 @@ html {
 @-o-viewport { width:device-width; }
 @viewport { width:device-width; }
 
-::-webkit-scrollbar {width: 10px;height: 10px;box-shadow: inset 1px 1px 0 rgba(0,0,0,.12);transition: all .5s cubic-bezier(.35,0,.25,1);background-color: rgba(0,0,0,.05);}
+::-webkit-scrollbar {width: 10px;height: 10px;transition: all .5s cubic-bezier(.35,0,.25,1);background-color: rgba(0,0,0,.05);}
 ::-webkit-scrollbar-button {display: none;}
 ::-webkit-scrollbar-corner {background-color: transparent;}
-::-webkit-scrollbar-thumb {background-color: rgba(0,0,0,.26);box-shadow: inset 1px 1px 0 rgba(0,0,0,.054), inset 0 -1px 0 rgba(0,0,0,.087);transition: all .5s cubic-bezier(.35,0,.25,1);}
+::-webkit-scrollbar-thumb {background-color: rgba(0,0,0,.26);transition: all .5s cubic-bezier(.35,0,.25,1);}
 
 
 /**

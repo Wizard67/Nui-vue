@@ -1,44 +1,47 @@
 <template>
   <article>
-    <div class="panel-tips shadow-on"
-        v-for="item in data">
-      <ul class="flex-between-hang-padding">
-        <div class="message">
-          <ul class="flex-between-hang">
-            <li>
-              <template v-if=" item.type === 'apply' ">
-                <router-link :to="{ name:'user', params:{ user:Number(item.fuid)} }"
-                              class="pointer"
-                              tag="span">
-                              {{ item.username }}
-                </router-link>
-                请求参与到分享
+    <div class="panel-message shadow-on"
+         v-for="item in data">
+      <ul class="flex-padding">
+        <!-- apply -->
+        <template  v-if="item.type === 'apply'">
+          <li> 
+            <nUsers
+              :src="item.avatar"
+              :target="'user'"
+              :id="Number(item.fuid)"
+              link/>
+          </li>
+          <li class="flex-full">
+            <ul class="flex-column-full-padding">
+              <li>
+                <span class="font-deep">请求参与到分享</span>
                 <router-link :to="{ name:'steps', params:{ steps:Number(item.param)} }"
                               class="pointer"
                               tag="span">
                               《{{ item.title }}》
                 </router-link>
-                之中
-              </template>              
-            </li>
-            <li class="flex-padding">
-              <div class="icons">{{ item.built | formatDate }}</div>
-            </li>
-          </ul>
-
-        </div>
-        <div class="method"
-             v-if="!Number(item.isread)">
-          <button @click="deal(item.mid,0)" class="shadow-btn">拒绝</button>
-          <button @click="deal(item.mid,1)" class="shadow-btn">同意</button>
-        </div>
+                <span class="font-deep">之中</span>
+                <small class="font-deep">{{ item.built | formatDate }}</small>
+              </li>
+              <li v-if="!Number(item.isread)" class="flex-end">
+                <button @click="deal(item.mid,0)" class="shadow-btn">拒绝</button>
+                <button @click="deal(item.mid,1)" class="shadow-btn">同意</button>
+              </li>
+            </ul>
+          </li>          
+        </template>
       </ul>
     </div>
   </article>
 </template>
 
 <script>
+  import nUsers from '@/components/nUsers'
   export default {
+    components: {
+      nUsers
+    },
     computed: {
       data() {
         return this.$store.state.messages.list

@@ -44,7 +44,7 @@ export default {
       timer = setTimeout( ()=>{
         this.showMessage = false
         window.addEventListener('scroll', scrollEvent)
-      },3000)
+      },1000)
     }
   },
   mounted () {

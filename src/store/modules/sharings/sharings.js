@@ -28,7 +28,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  _sharings_changList( state, value ){
+  changList( state, value ){
     state.list = value
   }
 }
@@ -51,9 +51,7 @@ const actions = {
         if ( datas.inf ) {
 
           // 添加数据到 state
-          commit( '_sharings_changList', datas.val )
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+          commit( 'changList', datas.val )
         }else{
           // 进行通知
           commit( '_global_changeMessage', { type:'error', content: datas.meg} )

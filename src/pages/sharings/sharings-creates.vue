@@ -1,7 +1,6 @@
 <template>
   <article>
    <div class="panel-form shadow-on">
-     <nTitle>创建分享</nTitle>
      <nForm>
         <nInput :name="'cover'"
                 :type="'picture'"
@@ -11,22 +10,20 @@
                 v-model="cover">
         </nInput>
 
-        <nInput :name="'title'"
-                :type="'title'"
+        <nInput :type="'title'"
                 :placeholder="'标题'"
 
                 v-model="title">
         </nInput>
 
-        <nInput :name="'summary'"
-                :type="'summary'"
+        <nInput :type="'summary'"
                 :placeholder="'介绍'"
 
                 v-model="summary">
         </nInput>
-        <!-- <canvas id="canvas"></canvas> -->
+
         <nButton slot="right"
-                 v-throttle="submitData">Create
+                 v-throttle="submitData">创建
         </nButton>
 
      </nForm>
@@ -36,7 +33,6 @@
 </template>
 
 <script>
-  import nTitle from '@/components/nTitle'
   import nForm from '@/components/nForm'
   import nButton from '@/components/nButton'
 
@@ -70,7 +66,6 @@
       }
     },
     components: {
-      nTitle,
       ...nForm,
       nButton
     }

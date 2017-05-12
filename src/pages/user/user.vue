@@ -1,55 +1,83 @@
 <template>
   <article>
-    <div class="panel-note shadow-on">
-      <h2 class="title">用户信息</h2>
-      <ul>
-        <li class="flex-padding-column">
+    <div class="panel-user shadow-on">
+      <ul class="flex-padding">
+        <li class="avatar">
           <img class="avatar" :src="dataInf.avatar">
-          <p>username: {{ dataInf.username }}</p>
-          <p>uid: #{{ dataInf.uid }}</p>
-          <p>email: {{ dataInf.email }}</p>
-          <p>introduce: {{ dataInf.introduce }}</p>
+        </li>
+        <li class="information">
+          <ul class="flex-between-hang-padding">
+            <li class="username">
+              <strong>{{ dataInf.username }}</strong>
+              <span>#{{ dataInf.uid }}</span>
+            </li>
+            <li><button class="icon" type="button"><i class="fa fa-pencil-square-o"></i></button></li>
+          </ul>
+
+          <ul class="flex-padding">
+            <li class="email">
+              <span>E-mail</span>
+              <p>{{ dataInf.email }}</p>
+            </li>
+          </ul>          
+
+          <ul class="flex-padding">
+            <li class="introduce">
+              <span>介绍</span>
+              <p>{{ dataInf.introduce }}</p>
+              <p></p>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
-    <div class="panel-tips shadow-on"
-         v-for="item in dataActive">
-      <ul class="flex-between-hang-padding">
-        <div class="message">
 
-          <template v-if="item.type === 'steps'">
-            <span class="mark red"></span>在分享
-            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                       class="pointer"
-                       tag="span">
-             《{{ item.extra.title }}》
-            </router-link>
-            中发布了新的内容
-          </template>
+    <div class="panel-note shadow-on">
+      <div class="panel-tips"
+           v-for="item in dataActive">
+        <ul class="flex-between-hang-padding">
+          <div class="message">
 
-          <template v-if="item.type === 'sharings'">
-            <span class="mark blue"></span>创建了
-            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                       class="pointer"
-                       tag="span">
-              《{{ item.extra.title }}》
-            </router-link>
-            的新分享
-          </template>
+            <template v-if="item.type === 'steps'">
+              <span class="mark put"></span>
+              <span class="font-deep">在分享</span>
+              <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                         class="pointer"
+                         tag="span">
+               《{{ item.extra.title }}》
+              </router-link>
+              <span class="font-deep">中发布了新的内容</span>
+            </template>
 
-          <template v-if="item.type === 'apply'">
-            <span class="mark green"></span>参与了
-            <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                       class="pointer"
-                       tag="span">
-              《{{ item.extra.title }}》
-            </router-link>
-            的分享
-          </template>
-        </div>
-        <div class="icons">{{ item.built | formatDate }}</div>
-      </ul>
+            <template v-if="item.type === 'sharings'">
+              <span class="mark created"></span>
+              <span class="font-deep">创建了</span>
+              <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                         class="pointer"
+                         tag="span">
+                《{{ item.extra.title }}》
+              </router-link>
+              <span class="font-deep">的新分享</span>
+            </template>
+
+            <template v-if="item.type === 'apply'">
+              <span class="mark join"></span>
+              <span class="font-deep">参与了</span>
+              <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                         class="pointer"
+                         tag="span">
+                《{{ item.extra.title }}》
+              </router-link>
+              <span class="font-deep">的分享</span>
+            </template>
+          </div>
+          <div class="icons">{{ item.built | formatDate }}</div>
+        </ul>
+      </div>      
     </div>
+
+
+
   </article>
 </template>
 

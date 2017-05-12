@@ -9,7 +9,7 @@ export default {
    */
   _global_putPicture( { commit, rootGetters: {_global_valueIntoForm} }, value){
       
-    let base64 = value.substring(value.indexOf(',')+1)
+    let base64 = value.substring(value.indexOf('base64,')+1)
 
     const action = 'http://upload-z2.qiniu.com/putb64/-1'
     const getToken = $ajax.get( 'get/getQnToken')

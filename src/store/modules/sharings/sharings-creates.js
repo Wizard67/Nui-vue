@@ -27,11 +27,8 @@ const actions = {
         // 判断是否创建成功
         if ( data.inf ) {
 
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: data.meg} )
           // url 跳转至分享内容页面
           $router.push( {name:'steps', params:{steps: data.val }})
-
         }else{
           // 进行通知
           commit( '_global_changeMessage', { type:'error', content: data.meg} )

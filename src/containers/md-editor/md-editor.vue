@@ -50,7 +50,7 @@
     name: 'Editor',
     data(){
       return {
-        value: 'wirter something',
+        value: '',
         htmlData: '',
         editor: null
       }
@@ -134,8 +134,6 @@
         this.__transform()
       },
       addItalic(){
-        let select = this.__selectText()
-        console.log(select)
       }
     }
   }

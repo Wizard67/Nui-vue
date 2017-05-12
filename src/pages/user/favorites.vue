@@ -1,7 +1,6 @@
 <template>
   <article>
     <div class="panel-note shadow-on">
-      <h2 class="title">收藏列表</h2>
       <ul class="flex-padding-column">
         <li v-for="item in data" >
           <template v-if=" item.type === 'sharings' ">

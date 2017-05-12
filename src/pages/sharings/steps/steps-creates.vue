@@ -1,7 +1,6 @@
 <template>
   <article>
    <div class="panel-form shadow-on">
-     <nTitle>创建步骤</nTitle>
      <form>
        <mdEditor></mdEditor>
 
@@ -16,7 +15,6 @@
 </template>
 
 <script>
-  import nTitle from '@/components/nTitle'
   import mdEditor from '@/containers/md-editor'
 
   export default {
@@ -38,7 +36,6 @@
       }
     },
     components: {
-      nTitle,
       mdEditor
     }
   }

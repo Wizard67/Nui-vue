@@ -14,7 +14,6 @@
     name: 'nCover',
     props: {
      src: {
-      type: String,
       required: true
      },
      link: {
@@ -22,7 +21,6 @@
       default: false
      },
      target: {
-      type: String,
       dafault: NaN
      },
      id: {

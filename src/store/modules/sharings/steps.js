@@ -24,7 +24,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  _steps_changList( state, value ){
+  changList( state, value ){
     state.list = value
   }
 
@@ -37,28 +37,90 @@ const actions = {
    * @param  {Function} options.commit
    * @param  {Number} sid
    */
-  _steps_getSteps( {commit, rootGetters: {_global_handleDatas} }, sid){
+  _steps_getSteps( {commit}, sid){
 
-    // 发送 ajax 请求
     $ajax.get( `get/steps/${sid}` )
       .then((res) => {
         const datas = res.data
-        console.log(res)
         // 成功获取到数据
         if ( datas.inf ) {
 
           // 添加数据到 state
-          commit( '_steps_changList', datas.val )
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+          commit( 'changList', datas.val )
         }else{
           // 进行通知
           commit( '_global_changeMessage', { type:'error', content: datas.meg} )
         }
       })
       .catch((err) => {
-        console.log(err)
+        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
       })
+  },
+
+  /**
+   * 获取步骤基本信息
+   * @param  {Function} options.commit
+   * @param  {Number} sid
+   * @return {Promise}
+   */
+  _steps_default( {commit}, sid){
+
+    return new Promise ((resolve, reject) => {
+
+      $ajax.post( `get/step_default/${sid}` ).then((res) => {
+        let datas = res.data
+        if ( datas.inf ) resolve(datas.val)
+      }).catch((err) => {
+        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
+        reject(err)
+      })
+    })
+  },
+
+  /**
+   * 进行参与操作
+   * @param  {Function} options.commit
+   * @param  {Number} sid
+   */
+  _steps_join( {commit}, sid){
+
+    $ajax.post( `post/sharingsApply/${sid}` )
+      .then((res) => {
+        const datas = res.data
+        if ( datas.inf ) {
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+        }else{
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+        }
+      })
+      .catch((err) => {
+        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
+      })
+  },
+
+  /**
+   * 进行收藏操作
+   * @param  {Function} options.commit
+   * @param  {Number} sid
+   * @return {Promise}
+   */
+  _steps_favorite( {commit}, sid){
+
+    return new Promise ((resolve, reject) => {
+
+      $ajax.post( `post/favorites/sharings/${sid}` ).then((res) => {
+        let datas = res.data
+        if ( datas.inf ) {
+          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+          resolve(datas.val)
+        }else{
+          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+        }
+      }).catch((err) => {
+        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
+        reject(err)
+      })
+    })
   }
 
 }

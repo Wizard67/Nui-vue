@@ -88,8 +88,18 @@ aside {
   }
   div.route-app {
     padding: 1rem 0;
-    li > a {
+    a {
       padding: 0 .5rem;
+      
+      &:active {
+        color: $color-light;
+      }
+
+      &[disabled] {
+        color: $color-light;
+        
+        cursor: not-allowed;
+      }
     }
   }
   div.route-page {

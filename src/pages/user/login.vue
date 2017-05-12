@@ -1,7 +1,6 @@
 <template>
   <article>
     <div class="panel-form shadow-on">
-      <nTitle>用户登录</nTitle>
       <nForm>
         <nInput :name="'email'"
                 :type="'email'"
@@ -16,12 +15,8 @@
                 v-model="password">
         </nInput>
 
-        <router-link slot="right"
-                     :to="{name:'register'}" class="shadow-btn" tag="button" type="button">注册
-        </router-link>
-
         <nButton slot="right"
-                 v-throttle="submitData">Sign in
+                 v-throttle="submitData">登录
         </nButton>
       </nForm>
     </div>   
@@ -29,7 +24,6 @@
 </template>
 
 <script>
-  import nTitle from '@/components/nTitle'
   import nForm from '@/components/nForm'
   import nButton from '@/components/nButton'
 
@@ -56,7 +50,6 @@
       }
     },
     components: {
-      nTitle,
       ...nForm,
       nButton
     }

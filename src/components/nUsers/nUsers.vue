@@ -1,6 +1,6 @@
 <template>
-  <router-link v-if="link" :to="{ name:target, params:{[target]: id} }" class="users avatar shadow-btn" :src="src" tag="img"/>
-  <img v-else class="users avatar shadow-btn" :src="src">
+  <router-link v-if="link" :to="{ name:target, params:{[target]: id} }" class="users avatar pointer" :src="src" tag="img"/>
+  <img v-else class="users avatar pointer" :src="src">
 </template>
 
 <script>

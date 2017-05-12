@@ -69,26 +69,6 @@ export default {
             marks: ['评论', 'Comments']
           },
           component: stepsComments
-        },
-
-        // test function
-        {
-          path: 'join',
-          name: 'join',
-          meta: {
-            pin: true,
-            marks: ['参与', 'Join']
-          }
-        },
-
-        // test function
-        {
-          path: 'favorite',
-          name: 'favorite',
-          meta: {
-            pin: true,
-            marks: ['收藏', 'favorite']
-          }
         }
       ]
     }

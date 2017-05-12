@@ -2,15 +2,32 @@
   <div class="input-group">
 
     <!-- input's type is password -->
-    <template v-if="type === 'password'">
+    <template v-if="inputType === 'password'">
       <span class="lamp" :class="lampClass"></span>
       <input type="password" :name="name" :placeholder="placeholder"
              v-model="value"
              @focus="focus" @blur="blur">
     </template>
-    
+
+    <!-- input's type is text -->
+    <template v-if="inputType === 'text'">
+      <span class="lamp" :class="lampClass"></span>
+      <input type="text" :name="name" :placeholder="placeholder"
+             v-model="value"
+             @focus="focus" @blur="blur">      
+    </template>
+
+    <!-- input's type is textarea -->
+    <template v-if="inputType === 'textarea'">
+      <span class="lamp" :class="lampClass"></span>
+      <textarea :name="name" :placeholder="placeholder"
+                v-model="value"
+                @focus="focus" @blur="blur">
+      </textarea>
+    </template>
+
     <!-- input's type is file -->
-    <template v-else-if="type === 'picture'">
+    <template v-if="inputType === 'file'">
       <span class="lamp" :class="lampClass"></span>
       <input type="file" :name="name" :id="name"
              @change="change">
@@ -18,15 +35,6 @@
         {{ placeholder }}
       </label>
     </template>
-
-    <!-- input's type is text -->
-    <template v-else>
-      <span class="lamp" :class="lampClass"></span>
-      <input type="text" :name="name" :placeholder="placeholder"
-             v-model="value"
-             @focus="focus" @blur="blur">      
-    </template>
-    
 
   </div>
 </template>
@@ -40,15 +48,12 @@
       return{
         value: '',
         state: 'none',
-        reg: {
-          ...rule
-        },
+        rule: rule,
 
         hasAllowFile: false,
         sizeMax: 1024,
         file: '',
         labelStyle: ''
-        
       }
     },
     props: {
@@ -57,8 +62,7 @@
         required: true
       },
       name: {
-        type: String,
-        required: true
+        type: String
       },
       placeholder: {
         type: String
@@ -77,6 +81,9 @@
       }
     },
     computed: {
+      inputType(){
+        return this.rule[this.type]['type'] || 'text'
+      },
       lampClass(){
         if (this.state === 'focus') return 'focus'
         if (this.state === 'error') return 'error'
@@ -97,10 +104,10 @@
       blur(){
         this.test(this.type)
       },
-      test(rule){
-        if ( !this.reg[rule]['rule'].test(this.value) ){
+      test(type){
+        if ( !this.rule[type]['reg'].test(this.value) ){
           this.state = 'error'
-          this.$message(this, this.state, this.reg[rule]['message'])
+          this.$message(this, this.state, this.rule[type]['message'])
           // clear this input value at father-component
           this.$emit('input', '')
         }else{
@@ -109,6 +116,7 @@
           this.$emit('input', event.target.value)
         }
       },
+
       // file input
       change(event){
         this.cleanInf()

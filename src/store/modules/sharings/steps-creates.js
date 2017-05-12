@@ -22,8 +22,7 @@ const actions = {
         const datas = res.data
         // 判断是否创建成功
         if ( datas.inf ) {
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
+
           // url 跳转至分享步骤页面
           $router.push( {name:'steps', params:{sid: res.data.val }})
 
@@ -33,7 +32,7 @@ const actions = {
         }
       })
       .catch((err) => {
-        console.log(err)
+        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
       })
   }
 }

@@ -133,6 +133,10 @@ div.panel-note {
   div.type {
     padding: 0 2rem;
   }
+
+  div[class^='panel'] {
+    margin: 0;
+  }
 }
 
 /**
@@ -189,5 +193,47 @@ div.panel-step {
   }
 }
 
-div.editor {
+div.panel-user {
+  align-self: stretch;
+  padding: 1rem 0;
+
+  li img.avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  li.information {
+    flex: 1 1 auto;
+    
+    padding: .5rem 0 .5rem 0;
+    
+    li.username {
+      span {
+        color: $color-deep;
+      }
+    }
+
+    li.email,
+    li.introduce {
+
+      line-height: 1.5rem;
+
+      span {
+        font-size: .85rem;
+        line-height: 1rem;
+
+        color: $color-deep;
+      }
+    }
+  }
+}
+
+div.panel-message {
+  align-self: stretch;
+  padding: 1rem 0;
+
+  li img.avatar {
+    width: 35px;
+    height: 35px;
+  }
 }

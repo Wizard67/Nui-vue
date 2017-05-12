@@ -53,15 +53,12 @@
         required: true
       },
       cover: {
-        typr: String,
         required: true
       },
       title: {
-        type: String,
         required: true
       },
       summary: {
-        type: String,
         required: true
       },
       users: {

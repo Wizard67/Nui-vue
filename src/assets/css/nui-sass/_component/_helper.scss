@@ -41,6 +41,9 @@ li {
   &[class*="auto"] {
     flex: auto;
   }
+  &[class*="full"] {
+    width: 100%;
+  }
   &[class*="padding"] {
     padding: 0 1rem;
   }
@@ -101,13 +104,6 @@ h2.title {
   }
 }
 
-// .user {
-//   padding: 0 1rem;
-//   li ~ li {
-//     padding-left: .5rem;
-//   }
-// }
-
 .user {
   line-height: 1;
 
@@ -147,35 +143,27 @@ img.avatar.users {
               0 1px 5px 0 rgba(0,0,0,.12),
               0 3px 1px -2px rgba(0,0,0,.2);
 }
-.shadow-btn {
+.shadow-btn,
+.shadow-action {
   border-radius: 4px;
   
   cursor: pointer;
-  &:hover {
+
+  & {
     box-shadow: 0 4px 5px 0 rgba(0,0,0,.14),
                 0 1px 10px 0 rgba(0,0,0,.12),
                 0 2px 4px -1px rgba(0,0,0,.3);
   }
+}
+.shadow-btn {
   &:active {
     background-color: $color-deep;
-
     color: $color-light;
   }
-
-  &[disabled] {
-    color: $color-light;
-    
-    cursor: not-allowed;
-
-    &:hover {
-      box-shadow: none;
-    }
-    &:active {
-      background-color: transparent;
-
-      box-shadow: none;
-    }
-  }
+}
+.shadow-action {
+  background-color: $color-deep;
+  color: $color-light;
 }
 
 .mark {
@@ -184,22 +172,29 @@ img.avatar.users {
   border-radius: 50%;
   margin-right: 1rem;
 }
-.red {
-  background-color: #f44336 !important;
+
+.focus,
+.created {
+  background-color: #A5DEE4 !important;
 }
-.green {
-  background-color: #f44336 !important;
+.success,
+.join {
+  background-color: #B5CAA0 !important;
 }
-.blue {
-  background-color: #3f51b5 !important;
+.error,
+.put {
+  background-color: #EEA9A9 !important;
 }
 
-.focus {
-  background-color: blue !important;
+.font-light {
+  color: $color-light;
 }
-.success {
-  background-color: green !important;
+.font-deep {
+  color: $color-deep;
 }
-.error {
-  background-color: red !important;
+.font-red {
+  color: #EEA9A9;
+}
+.font-green {
+  color: #B5CAA0;
 }

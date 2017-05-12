@@ -1,7 +1,6 @@
 <template>
   <article>
     <div class="panel-form shadow-on">
-      <nTitle>注册账户</nTitle>
       <nForm>
         <nInput :name="'email'"
                 :type="'email'"
@@ -18,7 +17,7 @@
 
         <nButton slot="right"
                  v-throttle="submitData">
-          Sign up
+          注册
         </nButton>
       </nForm>
 
@@ -27,7 +26,6 @@
 </template>
 
 <script>
-  import nTitle from '@/components/nTitle'
   import nForm from '@/components/nForm'
   import nButton from '@/components/nButton'
 
@@ -54,7 +52,6 @@
       }
     },
     components: {
-      nTitle,
       ...nForm,
       nButton
     }

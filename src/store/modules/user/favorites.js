@@ -24,7 +24,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  _user_changFavorites( state, value ){
+  changFavorites( state, value ){
     state.list = value
   },
 }
@@ -44,10 +44,8 @@ const actions = {
         // 成功获取到数据
         if ( datas.inf ) {
           // 添加数据到 state
-          commit( '_user_changFavorites', datas.val )
+          commit( 'changFavorites', datas.val )
 
-          // 进行通知
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
         }else{
           // 进行通知
           commit( '_global_changeMessage', { type:'error', content: datas.meg} )
