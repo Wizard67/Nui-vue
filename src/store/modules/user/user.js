@@ -60,6 +60,8 @@ const actions = {
       .then( (res) => {
         const inf = res[0].data
         const active = res[1].data
+        
+        console.log(res)
 
         if ( inf.inf ) {
           commit( 'changInf', inf.val )
