@@ -34,26 +34,18 @@ const actions = {
    * 获取用户收藏信息
    * @param  {Function} options.commit
    */
-  _user_getFavorites( {commit} ){
+  _user_getFavorites( {dispatch, commit} ){
 
     // 发送 ajax 请求
-    $ajax.get( `/get/favorites/` )
-      .then((res) => {
-        const datas = res.data
+    $ajax.get( `/get/favorites/` ).then((res) => {
 
-        // 成功获取到数据
-        if ( datas.inf ) {
-          // 添加数据到 state
-          commit( 'changFavorites', datas.val )
-
-        }else{
-          // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+      dispatch( '_global_handleRes', res ).then((res)=>{
+        if (res) {
+          commit( 'changFavorites', res.val )
         }
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      
+    })
   }
 }
 

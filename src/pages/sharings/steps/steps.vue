@@ -2,13 +2,13 @@
   <article>
     <panelStep
       v-for="(item,key) in data"
-      :nid="item.ssid"
+      :nid="item.tid"
       :users="item.users"
       :content="item.content"
       :date="item.date"
       :built="item.built"
       :time="item.time"
-      :key="item.ssid">
+      :key="item.tid">
     </panelStep>
   </article>
 </template>

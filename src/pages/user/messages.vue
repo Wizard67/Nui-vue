@@ -49,7 +49,7 @@
     },
     methods: {
       deal( mid, result ) {
-        const params = [ mid, result ]
+        const params = {mid:mid,result:result}
         this.$store.dispatch( '_user_sharingsResult', params )
       }
     },

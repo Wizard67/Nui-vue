@@ -92,8 +92,8 @@
       }
     },
     mounted(){
-      // const uid = (this.$route.params.user)?this.$route.params.user:0
-      this.$store.dispatch( '_user_getAbout' )
+      const uid = (this.$route.params.user)?this.$route.params.user:0
+      this.$store.dispatch( '_user_getAbout', uid )
     }
   }
 </script>

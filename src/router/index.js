@@ -50,14 +50,14 @@ Routers.beforeEach((to, from, next) => {
 
     // 判定用户是否拥有浏览权限
     if ( to.meta.auth ) {
-        if ( true ) {
-            next();
-        }
-        else {
-            next({
-                name: 'home'
-            })
-        }
+      if ( localStorage.token ) {
+        next();
+      }
+      else {
+        next({
+            name: 'login'
+        })
+      }
     }
     else {
         next();

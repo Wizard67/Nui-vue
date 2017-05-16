@@ -15,37 +15,27 @@ const mutations = {
 
 const actions = {
   // 获取表单登录信息
-  _login_checkAccount( { commit, rootGetters: {_global_valueIntoForm} }, value){
+  _login_checkAccount( { dispatch, commit, rootGetters: {_global_valueIntoForm} }, value){
 
     // 格式化数据
     const params = _global_valueIntoForm(value)
-
     // 发送 ajax 请求
-    $ajax.post( 'post/login', params )
-      .then((res) => {
-        let data = res.data
-        // 判断是否登录成功
-        if ( data.inf ) {
+    $ajax.post( 'post/login', params ).then((res) => {
 
+      dispatch( '_global_handleRes', res ).then((res)=>{
+        if (res) {
           // 处理数据
-          localStorage.uid = data.val.uid
-          localStorage.rank = data.val.rank
-          localStorage.username = data.val.username
-          localStorage.avatar = data.val.avatar
+          localStorage.uid = res.val.uid
+          localStorage.rank = res.val.rank
+          localStorage.username = res.val.username
+          localStorage.avatar = res.val.avatar
+          localStorage.token = res.val.token
 
-          commit( '_global_changeAvatar', data.val.avatar )
-
-          commit( '_global_changeMessage', { type:'success', content: data.meg} )
-          // url 跳转
-          // $router.push({name:'home'})
-
-        }else{
-          commit( '_global_changeMessage', { type:'error', content: data.meg} )
+          commit( '_global_changeAvatar', res.val.avatar )
         }
       })
-      .catch((err) => {
-        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
-      })
+
+    })
   }
 }
 

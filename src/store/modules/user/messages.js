@@ -26,7 +26,7 @@ const mutations = {
    */
   changMessages( state, value ){
     state.list = value
-  },
+  }
 }
 
 const actions = {
@@ -34,48 +34,33 @@ const actions = {
    * 获取用户通知消息
    * @param  {Function} options.commit
    */
-  _user_getMessages( {commit} ){
+  _user_getMessages( {dispatch, commit} ){
 
     // 发送 ajax 请求
-    $ajax.get( `get/messages/` )
-      .then((res) => {
-        const datas = res.data
+    $ajax.get( `get/messages/` ).then((res) => {
 
-        // 成功获取到数据
-        if ( datas.inf ) {
-
-          // 添加数据到 state
-          commit( 'changMessages', datas.val )
-        }else{
-          // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+      dispatch( '_global_handleRes', res ).then((res)=>{
+        if (res) {
+          commit( 'changMessages', res.val )
         }
       })
-      .catch((err) => {
-        console.log(err)
-      })
+
+    })
   },
 
   /**
    * 处理用户参与分享的请求
    * @param  {Number} $result
    */
-  _user_sharingsResult( {commit}, params ){
+  _user_sharingsResult( {dispatch, commit}, params ){
     // 发送 ajax 请求
-    $ajax.get( `post/sharingsResult/${params[0]}/${params[1]}` )
-      .then((res) => {
-        console.log(res)
-        
-        const datas = res.data
+    $ajax.get( `post/sharingsResult/${params.mid}/${params.result}` ).then((res) => {
 
-        // 成功获取到数据
-        if ( datas.inf ) {
+      dispatch( '_global_handleRes', res ).then((res)=>{
 
-        }
       })
-      .catch((err) => {
-        console.log(err)
-      })
+
+    })
   }
 }
 

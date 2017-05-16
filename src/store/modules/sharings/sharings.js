@@ -40,26 +40,19 @@ const actions = {
    * @param  {Function} options.commit
    * @param  {Number} page
    */
-  _sharings_getSharings( {commit}, page){
+  _sharings_getSharings( {dispatch, commit}, page){
 
     // 发送 ajax 请求
-    $ajax.get( `get/sharings/${page}` )
-      .then((res) => {
-        const datas = res.data
+    $ajax.get( `get/sharings/${page}` ).then((res) => {
 
-        // 成功获取到数据
-        if ( datas.inf ) {
-
-          // 添加数据到 state
-          commit( 'changList', datas.val )
-        }else{
-          // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
+      dispatch( '_global_handleRes', res ).then((res)=>{
+        if (res) {
+          console.log(res.val)
+          commit( 'changList', res.val )
         }
       })
-      .catch((err) => {
-        console.log(err)
-      })
+
+    })
   }
 }
 

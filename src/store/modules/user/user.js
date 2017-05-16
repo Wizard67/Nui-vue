@@ -50,37 +50,33 @@ const actions = {
    * @param  {Function} options.commit
    * @param  {Number} uid
    */
-  _user_getAbout( {commit}, uid){
+  _user_getAbout( {dispatch, commit}, uid){
 
-    // 发送 ajax 请求
-    const getUserInf = () => $ajax.get( `get/user_inf/${uid}` )
-    const getUserActive = () => $ajax.get( `get/user_active/${uid}`)
+    dispatch( '_global_test', 'test' )
+    console.log(dispatch( '_global_test', 'test' ))
 
-    $ajax.all( [getUserInf(), getUserActive()] )
-      .then( (res) => {
-        const inf = res[0].data
-        const active = res[1].data
-        
-        console.log(res)
 
-        if ( inf.inf ) {
-          commit( 'changInf', inf.val )
-        }else{
-          // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: inf.meg} )
-        }
-        
-        if ( active.inf ) {
-          // 进行通知
-          commit( 'changActive', active.val )
-        }else{
-          // 进行通知
-          commit( '_global_changeMessage', { type:'error', content: active.meg} )
-        }
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+
+    // const getUserInf = () => $ajax.get( `get/user_inf/${uid}` )
+    // const getUserActive = () => $ajax.get( `get/user_active/${uid}`)
+
+    // $ajax.all( [getUserInf(), getUserActive()] ).then((res)=>{
+
+    //   const inf = res[0].data
+    //   const active = res[1].data
+
+    //   dispatch( '_global_handleRes', res[0] ).then((res)=>{
+    //     if (res) {
+    //       commit( 'changInf', res.val )
+    //     }
+    //   })
+
+    //   dispatch( '_global_handleRes', res[1] ).then((res)=>{
+    //     if (res) {
+    //       commit( 'changActive', res.val )
+    //     }
+    //   })
+    // })
   }
 }
 
