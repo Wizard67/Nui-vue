@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
+import $store from '@/store'
 
 // axios配置
 
@@ -14,12 +15,26 @@ axios.defaults.headers = {
 axios.interceptors.request.use(
   (config) => {
     if (localStorage.token) {
-      config.headers.Authorization = `token ${localStorage.token}`
+      // 判断是否是上传到图库
+      if ( config.headers['Content-Type'] !== 'application/octet-stream') {
+        config.headers.Authorization = `token ${localStorage.token}`
+      }
     }
     return config
   },
   (err) => {
     return Promise.reject(err)
+  }
+)
+
+// Add a response interceptor
+axios.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    $store.commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
+    return Promise.reject(error);
   }
 )
 

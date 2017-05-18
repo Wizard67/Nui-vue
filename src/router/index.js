@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import $ajax from '@/axios'
-import $router from '@/router'
 
 Vue.use( Router )
 
@@ -23,7 +21,10 @@ let routes = [
 const Routers = new Router({
   mode: 'history',
   linkActiveClass: 'router-on',
-  routes: routes  
+  routes: routes,
+  // scrollBehavior (to, from, savedPosition) {
+  //   return { x: 0, y: 0 }
+  // }
 })
 
 /**
@@ -33,36 +34,35 @@ Routers.beforeEach((to, from, next) => {
 
     // 执行特定路由操作
     if ( to.name === 'logout') {
-      // 发送注销请求
-      $ajax.post( 'delete/logout' )
-        .then((res) => {
+      // 清除 localStorage 数据
+      localStorage.uid = ''
+      localStorage.rank = ''
+      localStorage.username = ''
+      localStorage.avatar = ''
+      localStorage.token = ''
 
-          if ( res.data.inf ) {
-            $router.push({name:'home'})
-          }else{
-            // console.log(error)
-          }
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+      // 跳转首页
+      next({
+        name: 'home'
+      })
     }
 
     // 判定用户是否拥有浏览权限
     if ( to.meta.auth ) {
       if ( localStorage.token ) {
-        next();
+        next()
       }
       else {
         next({
-            name: 'login'
+          name: 'login'
         })
       }
     }
     else {
-        next();
+      next();
     }
 })
+
 
 
 export default Routers

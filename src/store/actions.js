@@ -3,9 +3,6 @@ import $router from '@/router'
 
 export default {
 
-  _global_test( { commit }, res ){
-    console.log(res)
-  },
   /**
    * 处理服务器返回的信息
    * @param  {Object} res
@@ -61,7 +58,7 @@ export default {
    */
   _global_putPicture( { commit, rootGetters: {_global_valueIntoForm} }, value ){
       
-    let base64 = value.substring(value.indexOf('base64,')+1)
+    let base64 = value.substring(value.indexOf(',')+1)
 
     const action = 'http://upload-z2.qiniu.com/putb64/-1'
     const getToken = $ajax.get( 'get/getQnToken')
@@ -69,19 +66,19 @@ export default {
     return new Promise ((resolve, reject) => {
 
       getToken.then((res) => {
-        let data = res.data
+
         let token = ''
-        if ( data.inf ) token = data.val
-        
+        let data = res.data
+        if ( data.sta === 200 ) token = data.val
+
         return $ajax.post(action, base64, {
          headers: {
            'Content-Type': 'application/octet-stream',
            'Authorization': `UpToken ${token}`
-         },
-         withCredentials: false,
+         }
         })
       }).then((res) => {
-        resolve(`${res.data.name}.${res.data.type}`)
+        resolve(res.data.key)
       }).catch((err) => {
         reject(err)
       })

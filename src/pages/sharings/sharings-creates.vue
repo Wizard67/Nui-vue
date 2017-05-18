@@ -47,7 +47,6 @@
     methods: {
       submitData(){
 
-        // 获取表单数据
         for(let item in this.$data) {
           if ( !this.$data[item] ) {
             return this.$message(this,'error','请将表单填写完整')
@@ -58,8 +57,6 @@
         .then((res) => {
           this.cover = res
           const value = {...this.$data}
-
-          // 提交数据
           this.$store.dispatch( '_sharingsCreates_addSharing', value )
         })
 

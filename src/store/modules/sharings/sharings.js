@@ -1,5 +1,4 @@
 import $ajax from '@/axios'
-import $router from '@/router'
 
 const state = {
   list: [

@@ -1,12 +1,13 @@
 <template>
   <router-link v-if="link"
               :to="{ name:target, params:{[target]: id} }"
-              :src="src"
+              v-lazy="src"
               class="cover pointer"
               tag="img"/>
   <img v-else
        class="cover pointer"
-       :src="src">
+       :style="style"
+       v-lazy="src">
 </template>
 
 <script>

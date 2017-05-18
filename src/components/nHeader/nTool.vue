@@ -92,9 +92,12 @@
       _login_toRegister(){
         this.$router.push({ name: 'register'})
       },
+
       _steps_default(){
         let sid = this.$route.params.steps
+        console.log(this.$store.dispatch( '_steps_default', sid ))
         this.$store.dispatch( '_steps_default', sid ).then((res)=>{
+          console.log(res)
           this.title = res.title
           this.iskeep = Number(res.iskeep)
         })
@@ -105,10 +108,12 @@
       },
       _steps_favorite(){
         let sid = this.$route.params.steps
+        
         this.$store.dispatch( '_steps_favorite', sid ).then((res)=>{
           this.iskeep = Number(res)
         })
       }
+
     }
   }
 </script>

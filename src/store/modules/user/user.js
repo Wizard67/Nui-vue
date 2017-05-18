@@ -52,31 +52,26 @@ const actions = {
    */
   _user_getAbout( {dispatch, commit}, uid){
 
-    dispatch( '_global_test', 'test' )
-    console.log(dispatch( '_global_test', 'test' ))
+    const getUserInf = () => $ajax.get( `get/user_inf/${uid}` )
+    const getUserActive = () => $ajax.get( `get/user_active/${uid}`)
 
+    $ajax.all( [getUserInf(), getUserActive()] ).then((res)=>{
 
+      const inf = res[0].data
+      const active = res[1].data
 
-    // const getUserInf = () => $ajax.get( `get/user_inf/${uid}` )
-    // const getUserActive = () => $ajax.get( `get/user_active/${uid}`)
+      dispatch( '_global_handleRes', res[0] ).then((res)=>{
+        if (res) {
+          commit( 'changInf', res.val )
+        }
+      })
 
-    // $ajax.all( [getUserInf(), getUserActive()] ).then((res)=>{
-
-    //   const inf = res[0].data
-    //   const active = res[1].data
-
-    //   dispatch( '_global_handleRes', res[0] ).then((res)=>{
-    //     if (res) {
-    //       commit( 'changInf', res.val )
-    //     }
-    //   })
-
-    //   dispatch( '_global_handleRes', res[1] ).then((res)=>{
-    //     if (res) {
-    //       commit( 'changActive', res.val )
-    //     }
-    //   })
-    // })
+      dispatch( '_global_handleRes', res[1] ).then((res)=>{
+        if (res) {
+          commit( 'changActive', res.val )
+        }
+      })
+    })
   }
 }
 

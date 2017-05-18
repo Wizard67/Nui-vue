@@ -1,5 +1,4 @@
 import $ajax from '@/axios'
-import $router from '@/router'
 
 const state = {
   list: [
@@ -62,12 +61,13 @@ const actions = {
     return new Promise ((resolve, reject) => {
 
       $ajax.post( `get/step_default/${sid}` ).then((res) => {
-        let datas = res.data
-        if ( datas.sta === 200 ) resolve(datas.val)
-      }).catch((err) => {
-        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
-        reject(err)
+
+        dispatch( '_global_handleRes', res ).then((res)=>{
+          if (res) resolve(res.val)
+        })
+
       })
+
     })
   },
 
@@ -76,7 +76,7 @@ const actions = {
    * @param  {Function} options.commit
    * @param  {Number} sid
    */
-  _steps_join( {dispatch,commit}, sid){
+  _steps_join( {dispatch, commit}, sid){
 
     $ajax.post( `post/sharingsApply/${sid}` ).then((res) => {
 
@@ -96,22 +96,18 @@ const actions = {
    * @param  {Number} sid
    * @return {Promise}
    */
-  _steps_favorite( {commit}, sid){
+  _steps_favorite( {dispatch, commit}, sid){
 
     return new Promise ((resolve, reject) => {
 
       $ajax.post( `post/favorites/sharings/${sid}` ).then((res) => {
-        let datas = res.data
-        if ( datas.sta === 200 ) {
-          commit( '_global_changeMessage', { type:'success', content: datas.meg} )
-          resolve(datas.val)
-        }else{
-          commit( '_global_changeMessage', { type:'error', content: datas.meg} )
-        }
-      }).catch((err) => {
-        commit( '_global_changeMessage', { type:'error', content: '请检查网络连接状况'} )
-        reject(err)
+
+        dispatch( '_global_handleRes', res ).then((res)=>{
+          if (res) resolve(res.val)
+        })
+
       })
+
     })
   }
 

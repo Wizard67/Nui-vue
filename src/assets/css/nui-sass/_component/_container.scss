@@ -23,6 +23,8 @@ div.panel-works {
 div.panel-sharing {
   li.cover {
     flex: none;
+    width: 280px;
+    height: 216px;
   }
   li.detail {
     flex: 1 1 auto;
@@ -36,6 +38,7 @@ div.panel-sharing {
   }
 
   @include _media( "lg" ){
+
   }
   @include _media( "md" ){
     & li.detail {
@@ -51,14 +54,15 @@ div.panel-sharing {
   }
   @include _media( "sm" ){
     & {
-        flex: none;
       & > ul.flex-between {
         justify-content: space-between;
 
-        flex-wrap: wrap;
+        flex-direction: column;
       }
       li.cover {
-        flex: 1;
+        flex: none;
+        width: 100%;
+        height: auto;
       }
     }
   }

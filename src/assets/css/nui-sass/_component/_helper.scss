@@ -12,13 +12,13 @@ li {
     flex-wrap: wrap;
   }
   &[class*="start"] {
-    justify-content: flex-start;
+    justify-content: start;
   }
   &[class*="end"] {
-    justify-content: flex-end;
+    justify-content: end;
   }
   &[class*="center"] {
-    justify-content: flex-center;
+    justify-content: center;
   }
   &[class*="between"] {
     justify-content: space-between;
@@ -119,6 +119,7 @@ img.avatar {
   display: block;
 }
 img.cover {
+  flex: none;
   width: 100%;
 }
 img.avatar {
