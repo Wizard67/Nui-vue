@@ -1,21 +1,23 @@
 <template>
   <article>
    <div class="panel-form shadow-on">
-     <form>
+
+     <nForm>
        <mdEditor></mdEditor>
 
-<!--        <ul class="flex-end">
-         <li>
-           <button @click.prevent="submitData" type="submit" class="shadow-btn">Create</button>
-         </li>
-       </ul> -->
-     </form>
+        <nButton slot="right"
+                 v-throttle="submitData">创建
+        </nButton>
+     </nForm>
+
    </div>
   </article>
 </template>
 
 <script>
+  import nForm from '@/components/nForm'
   import mdEditor from '@/containers/md-editor'
+  import nButton from '@/components/nButton'
 
   export default {
     data(){
@@ -36,7 +38,9 @@
       }
     },
     components: {
-      mdEditor
+      ...nForm,
+      mdEditor,
+      nButton
     }
   }
 </script>

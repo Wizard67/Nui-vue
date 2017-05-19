@@ -148,10 +148,14 @@ div.panel-note {
 */
 div.panel-tips {
   padding: 1rem 0;
+
+  span {
+    display: inline;
+  }
   .message,
   .method {
     display: flex;
-    align-items: center;
+
   }
   .mark {
     width: 8px;
@@ -174,8 +178,8 @@ div.panel-form {
   padding: 1rem 0;
 
   form {
-    max-width: 600px;
-
+    width: 100%;
+  
     .input-group {
       input[type = "text"],
       input[type = "password"],

@@ -19,11 +19,11 @@ export default {
         return
       // accepted
       case (202):
-        commit( '_global_changeMessage', { type:'error', content: res.data.meg} )
+        commit( '_global_changeMessage', { type:(res.data.val)?'success':'error', content: res.data.meg} )
         return res.data
       // no content
       case (204):
-        commit( '_global_changeMessage', { type:'error', content: res.data.meg} )
+        commit( '_global_changeMessage', { type:'warn', content: res.data.meg} )
         return res.data
       // bad request
       case (400):
@@ -69,7 +69,13 @@ export default {
 
         let token = ''
         let data = res.data
-        if ( data.sta === 200 ) token = data.val
+        if ( data.sta === 200 ) {
+          token = data.val
+        }else{
+          commit( '_global_changeMessage', { type:'error', content: data.meg} )
+          $router.push({name: 'login'})
+          return
+        }
 
         return $ajax.post(action, base64, {
          headers: {

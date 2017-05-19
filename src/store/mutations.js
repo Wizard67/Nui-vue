@@ -11,6 +11,14 @@ export default {
   },
 
   /**
+   * 修改是否显示侧边栏变量
+   * @param  {Boolean} boolean
+   */
+  _global_changeAside( state, boolean ){
+    state.showAside = boolean
+  },
+
+  /**
    * 更改用户头像信息
    * @param  {String} value
    */

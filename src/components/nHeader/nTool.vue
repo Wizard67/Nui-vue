@@ -1,13 +1,12 @@
 <template>
   <div v-if="!isShow" class="tool">
-    <ul class="flex-between">
-
+    <ul class="flex-between-hang">
       <!-- user -->
       <template v-if="this.route === 'user'">
         <li><p>用户信息</p></li>
         <li>
-          <button class="shadow-btn">关注</button>
-        </li>        
+          <!-- <button class="shadow-btn">关注</button> -->
+        </li>
       </template>
       
       <!-- message -->
@@ -47,10 +46,10 @@
       <template v-if="this.route === 'steps'">
         <li><p>{{ title }}</p></li>
         <li>
-          <button type="button" class="shadow-btn" @click="_steps_join">参与</button>
+          <button type="button" class="shadow-btn hide-xs" @click="_steps_join">参与</button>
           <template>
-            <button v-if="iskeep" type="button" class="shadow-action" @click="_steps_favorite">取消</button>
-            <button v-else type="button" class="shadow-btn" @click="_steps_favorite">收藏</button>
+            <button v-if="iskeep" type="button" class="shadow-action hide-xs" @click="_steps_favorite">取消</button>
+            <button v-else type="button" class="shadow-btn hide-xs" @click="_steps_favorite">收藏</button>
           </template>
         </li>     
       </template>
@@ -58,6 +57,12 @@
       <!-- stepsCreates -->
       <template v-if="this.route === 'stepsCreates'">
         <li><p>创建步骤</p></li>      
+      </template>
+
+      
+      <!-- works -->
+      <template v-if="this.route === 'works'">
+        <li><p>作品列表</p></li>      
       </template>
 
     </ul>

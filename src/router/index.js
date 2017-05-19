@@ -8,13 +8,15 @@ Vue.use( Router )
  */
 import noFind from './nofind'
 import user from './user'
-import home from './home'
+// import home from './home'
 import sharings from './sharings'
+import works from './works'
 
 let routes = [
   user,
-  home,
   sharings,
+  works,
+  // home,
   noFind
 ]
 
@@ -38,13 +40,14 @@ Routers.beforeEach((to, from, next) => {
       localStorage.uid = ''
       localStorage.rank = ''
       localStorage.username = ''
-      localStorage.avatar = ''
+      localStorage.avatar = '/static/default.jpg'
       localStorage.token = ''
 
+      location.href = '/sharings'
       // 跳转首页
-      next({
-        name: 'home'
-      })
+      // next({
+      //   name: 'home'
+      // })
     }
 
     // 判定用户是否拥有浏览权限

@@ -63,7 +63,7 @@ export default {
       path: 'login',
       name: 'login',
       meta: {
-        pin: true,
+        pin: false,
         marks: ['登录', 'Login']
       },
       component: login

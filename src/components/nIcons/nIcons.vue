@@ -24,8 +24,6 @@
           'fa fa-comments': this.type === 'comments',
           'fa fa-calendar': this.type === 'time',
           'fa fa-list-ul':  this.type === 'items',
-
-          'fa fa-circle-o-notch fa-spin':  this.type === 'loadMore',
         }
       }
     }

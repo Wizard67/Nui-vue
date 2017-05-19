@@ -32,6 +32,8 @@ const actions = {
           localStorage.token = res.val.token
 
           commit( '_global_changeAvatar', res.val.avatar )
+
+          $router.push({name:'sharings'})
         }
       })
 

@@ -40,40 +40,46 @@
 
             <template v-if="item.type === 'steps'">
               <span class="mark put"></span>
-              <span class="font-deep">在分享</span>
-              <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                         class="pointer"
-                         tag="span">
-               《{{ item.extra.title }}》
-              </router-link>
-              <span class="font-deep">中发布了新的内容</span>
+              <div>
+                <span class="font-deep">在分享</span>
+                <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                           class="pointer"
+                           tag="span">
+                 《{{ item.extra.title }}》
+                </router-link>
+                <span class="font-deep">中发布新内容</span>
+              </div>
             </template>
 
             <template v-if="item.type === 'sharings'">
               <span class="mark created"></span>
-              <span class="font-deep">创建了</span>
-              <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                         class="pointer"
-                         tag="span">
-                《{{ item.extra.title }}》
-              </router-link>
-              <span class="font-deep">的新分享</span>
+              <div>
+                <span class="font-deep">创建了</span>
+                <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                           class="pointer"
+                           tag="span">
+                  《{{ item.extra.title }}》
+                </router-link>
+                <span class="font-deep">的新分享</span>
+              </div>
             </template>
 
             <template v-if="item.type === 'apply'">
               <span class="mark join"></span>
-              <span class="font-deep">参与了</span>
-              <router-link :to="{ name:'steps',params:{'steps':item.param} }"
-                         class="pointer"
-                         tag="span">
-                《{{ item.extra.title }}》
-              </router-link>
-              <span class="font-deep">的分享</span>
+              <div>
+                <span class="font-deep">参与了</span>
+                <router-link :to="{ name:'steps',params:{'steps':item.param} }"
+                           class="pointer"
+                           tag="span">
+                  《{{ item.extra.title }}》
+                </router-link>
+                <span class="font-deep">的分享</span>
+              </div>
             </template>
           </div>
-          <div class="icons">{{ item.built | formatDate }}</div>
+          <div class="icons hide-sm">{{ item.built | formatDate }}</div>
         </ul>
-      </div>      
+      </div>
     </div>
 
 
@@ -91,7 +97,7 @@
         return this.$store.state.user.active
       }
     },
-    mounted(){
+    created(){
       const uid = (this.$route.params.user)?this.$route.params.user:0
       this.$store.dispatch( '_user_getAbout', uid )
     }

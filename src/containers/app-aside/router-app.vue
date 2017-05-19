@@ -4,7 +4,7 @@
       <li v-for=" (value,key) in index ">
         <router-link :to="{ name: key ,params: {id: 1} }" class="icon">{{ value.marks[0] }}</router-link>
       </li>
-      <li><a href="javascript:void(0);" class="icon" disabled>作品</a></li>
+      <li><a href="javascript:void(0);" class="icon" disabled>工具</a></li>
       <li><a href="javascript:void(0);" class="icon" disabled>问答</a></li>
       <li><a href="javascript:void(0);" class="icon" disabled>活动</a></li>
     </ul>

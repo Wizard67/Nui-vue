@@ -19,6 +19,9 @@ import sharingComments from './modules/sharings/comments'
 import Steps from './modules/sharings/steps'
 import StepsCreates from './modules/sharings/steps-creates'
 
+import works from './modules/works/works'
+import photo from './modules/works/photo'
+
 Vue.use( Vuex )
 
 export default new Vuex.Store({
@@ -38,6 +41,9 @@ export default new Vuex.Store({
 
     sharingComments,
     Steps,
-    StepsCreates
+    StepsCreates,
+
+    works,
+    photo
   }
 })

@@ -1,7 +1,9 @@
 <template>
   <header :class="type" class="shadow-on">
+    <button class="toggle-aside icon" @click="toggleAside"><i class="fa fa-bars"></i></button>
     <nTool :isShow="showMessage" :route="route"></nTool>
-    <nMessage :isShow="showMessage">{{ message.content }}</nMessage>
+    <nMessage :isShow="showMessage" :type="message.type">{{ message.content }}</nMessage>
+    <button class="toggle-helper icon"><i class="fa fa-bars"></i></button>
   </header>
 </template>
 
@@ -65,9 +67,10 @@ export default {
     }
   },
   methods: {
-    test(){
-      console.log('hehehe')
+    toggleAside(){
+      this.$store.commit('_global_changeAside',true)
     },
+
     _handleScroll () {
       raf(this.update)
     },

@@ -1,29 +1,17 @@
 <template>
   <article>
    <div class="panel-form shadow-on">
-     <nForm :style="'max-width: 600px'">
+     <nForm>
         <nInput :name="'cover'"
                 :type="'picture'"
                 :size="{ width: '280', height: '216'}"
-                :placeholder="'选择封面'"
+                :placeholder="'选择要上传的作品'"
 
                 v-model="cover">
         </nInput>
 
-        <nInput :type="'title'"
-                :placeholder="'标题'"
-
-                v-model="title">
-        </nInput>
-
-        <nInput :type="'summary'"
-                :placeholder="'介绍'"
-
-                v-model="summary">
-        </nInput>
-
         <nButton slot="right"
-                 v-throttle="submitData">创建
+                 v-throttle="">发布
         </nButton>
 
      </nForm>

@@ -24,7 +24,7 @@
         return this.$store.state.favorites.list
       }
     },
-    mounted(){
+    created(){
       this.$store.dispatch( '_user_getFavorites' )
     }
   }

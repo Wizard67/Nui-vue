@@ -7,11 +7,17 @@ export default {
     type:'',
     content: ''
   },
+
+  /**
+   * 强制显示侧边栏
+   */
+  showAside: false,
+
   /**
    * 用户头像信息
    * @type {String}
    */
-  avatar: localStorage.avatar || '/static/nologin.jpg',
+  avatar: localStorage.avatar || '/static/default.jpg',
 
   /**
    * 用户发布作品数

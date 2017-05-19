@@ -53,7 +53,7 @@
         this.$store.dispatch( '_user_sharingsResult', params )
       }
     },
-    mounted(){
+    created(){
       this.$store.dispatch( '_user_getMessages' )
     }
   }

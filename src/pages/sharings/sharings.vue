@@ -14,16 +14,13 @@
       :items="item.items"
       :key="item.sid">
     </panelSharing>
-    <ul class="flex-full-center">
-      <li class="flex-hang">
-        <nIcons type="loadMore"></nIcons>
-      </li>
-    </ul>
+    <nLoadmore v-show="busy"></nLoadmore>
+
   </article>
 </template>
 <script>
   import panelSharing from '@/containers/panel-sharing'
-  import nIcons from '@/components/nIcons'
+  import nLoadmore from '@/components/nLoadmore'
 
   var count = 0
 
@@ -35,7 +32,7 @@
     },
     components: {
       panelSharing,
-      nIcons
+      nLoadmore
     },
     computed: {
       data() {
@@ -52,11 +49,11 @@
         }, 1000);
       }
     },
-    mounted(){
-      if (this.data) {
-        const page = (this.$route.params.sharings)?this.$route.params.sharings:1
-        this.$store.dispatch( '_sharings_getSharings', page )
-      }
+    created(){
+
+      const page = (this.$route.params.sharings)?this.$route.params.sharings:1
+      this.$store.dispatch( '_sharings_getSharings', page )
+
     }
   }
 </script>

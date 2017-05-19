@@ -1,7 +1,7 @@
 <template>
   <article>
     <div class="panel-form shadow-on">
-      <nForm>
+      <nForm :style="'max-width: 600px'">
         <nInput :name="'email'"
                 :type="'email'"
                 :placeholder="'email@email.com'"

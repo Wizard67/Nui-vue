@@ -12,7 +12,7 @@ Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: '/static/img-default.svg',
   loading: '/static/img-default.svg',
-  attempt: 1,
+  attempt: 3,
   filter: {
     webp ({ src }) {
       const imgCdn = 'https://image.wizard67.com/'

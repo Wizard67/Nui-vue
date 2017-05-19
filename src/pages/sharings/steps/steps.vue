@@ -25,7 +25,7 @@
         return this.$store.state.Steps.list
       }
     },
-    mounted(){
+    created(){
       const sid = this.$route.params.steps
       this.$store.dispatch( '_steps_getSteps', sid)
     }
