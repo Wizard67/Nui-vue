@@ -15,7 +15,7 @@ Vue.use(VueLazyload, {
   attempt: 1,
   filter: {
     webp ({ src }) {
-      console.log(src)
+      if ( src === 'undefined') return
       const imgCdn = 'https://image.wizard67.com/'
       if ( src !== '/static/pictures/sharing.jpg') {
         return imgCdn+src

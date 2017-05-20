@@ -21,7 +21,8 @@
       messageClass(){
         return {
           'font-green':  this.type === 'success',
-          'font-red':    this.type === 'error'
+          'font-red':    this.type === 'error',
+          'font-blue':   this.type === 'warn'
         }
       }
     }

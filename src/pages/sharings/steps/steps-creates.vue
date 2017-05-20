@@ -3,7 +3,7 @@
    <div class="panel-form shadow-on">
 
      <nForm>
-       <mdEditor></mdEditor>
+       <mdEditor v-model="content"></mdEditor>
 
         <nButton slot="right"
                  v-throttle="submitData">创建
@@ -11,6 +11,7 @@
      </nForm>
 
    </div>
+
   </article>
 </template>
 

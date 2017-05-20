@@ -27,7 +27,7 @@ export default {
       path: 'release',
       name: 'release',
       meta: {
-        pin: true,
+        pin: false,
         marks: ['发布', 'Release']
       },
       component: resolve => require(['@/pages/works/release'],resolve),

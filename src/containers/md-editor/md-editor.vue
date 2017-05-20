@@ -32,13 +32,13 @@
               ><i class="fa fa-eye"></i></button>
     </ul>
     <hr>
-    <textarea spellcheck="false" placeholder="仅为测试,只支持 markdown 语法" 
+    <textarea spellcheck="false" placeholder="仅为测试,目前已关闭 markdown 语法支持" 
               ref="editor"
               v-model="value"
               v-debounceInput="input">
     </textarea>
     <div class="editor-view">
-    {{htmlData}}
+
     </div>
   </div>
 </template>
@@ -72,12 +72,15 @@
       },
       __transform(text){
         if (text) {
-          this.htmlData = marked(text)
+          // this.htmlData = marked(text)
+          this.htmlData = text
         }else{
           let m = this.editor.value
           this.value = m
-          this.htmlData = marked(m)
+          // this.htmlData = marked(m)
+          this.htmlData = m
         }
+        this.$emit('input',this.htmlData)
       },
       // https://gist.github.com/mollwe/4030803
       __selectText(){

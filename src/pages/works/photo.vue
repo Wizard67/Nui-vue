@@ -10,8 +10,7 @@
         </li>
         <li>
           <nContent>
-            <img v-lazy="data.cover">
-            {{data.cover}}
+            <img :src="`https://image.wizard67.com/${data.cover}`">
           </nContent>
         </li>
         <li class="flex-end-hang-padding">
@@ -38,7 +37,7 @@
         return this.$store.state.photo.list
       }
     },
-    mounted(){
+    created(){
       const wid = (this.$route.params.works)?this.$route.params.works:1
       this.$store.dispatch( '_photo_getPhoto', wid )
     }
