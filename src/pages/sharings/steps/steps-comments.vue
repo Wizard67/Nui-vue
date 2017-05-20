@@ -1,7 +1,7 @@
 <template>
   <article>
     <comment
-      v-for="(item,key) in data"
+      v-for="(item,key) in dataComments"
       :cid="item.cid"
       :user="item.user"
       :content="item.content"
@@ -19,7 +19,7 @@
       comment
     },
     computed: {
-      data() {
+      dataComments() {
         return this.$store.state.sharingComments
       }
     }

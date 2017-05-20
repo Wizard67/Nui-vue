@@ -9,7 +9,6 @@ export default {
    * @return {Object}
    */
   _global_handleRes( { commit }, res ){
-    console.log(res.data)
     switch (res.data.sta){
       // ok
       case (200):

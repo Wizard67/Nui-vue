@@ -11,7 +11,7 @@
         <li>
           <nContent>
             <img v-lazy="data.cover">
-            {{data.uid}}
+            {{data.cover}}
           </nContent>
         </li>
         <li class="flex-end-hang-padding">
@@ -38,9 +38,9 @@
         return this.$store.state.photo.list
       }
     },
-    created(){
+    mounted(){
       const wid = (this.$route.params.works)?this.$route.params.works:1
-      this.$store.dispatch( '_sharings_getPhoto', wid )
+      this.$store.dispatch( '_photo_getPhoto', wid )
     }
   }
 </script>

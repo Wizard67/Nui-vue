@@ -14,13 +14,13 @@ export default {
     pin: true,
     marks: ['作品', 'Works']
   },
-  component: pageDefault,
+  component: resolve => require(['@/pages/helper/page-default'],resolve),
   children: [
 
     {
       path: '',
       name: 'works',
-      component: works
+      component: resolve => require(['@/pages/works/works'],resolve),
     },
 
     {
@@ -30,7 +30,7 @@ export default {
         pin: true,
         marks: ['发布', 'Release']
       },
-      component: release
+      component: resolve => require(['@/pages/works/release'],resolve),
     },
 
     {
@@ -40,7 +40,7 @@ export default {
         pin: false,
         marks: ['图片', 'Photo']
       },
-      component: photo
+      component: resolve => require(['@/pages/works/photo'],resolve),
     },
   ]
 }

@@ -15,7 +15,6 @@
       :key="item.sid">
     </panelSharing>
     <nLoadmore v-show="busy"></nLoadmore>
-
   </article>
 </template>
 <script>

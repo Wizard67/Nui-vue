@@ -5,9 +5,7 @@
 
     <main>
       <nHeader></nHeader>
-      <transition name="slide-fade">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
     </main>
   </div>
 </template>

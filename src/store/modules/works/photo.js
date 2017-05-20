@@ -22,7 +22,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  changList( state, value ){
+  _photo_changList( state, value ){
     state.list = value
   }
 }
@@ -34,15 +34,14 @@ const actions = {
    * @param  {Function} options.commit
    * @param  {Number} page
    */
-  _sharings_getPhoto( {dispatch, commit}, page){
+  _photo_getPhoto( {dispatch, commit}, page){
 
     // 发送 ajax 请求
     $ajax.get( `get/photo/${page}` ).then((res) => {
 
       dispatch( '_global_handleRes', res ).then((res)=>{
         if (res) {
-          console.log(res.val)
-          commit( 'changList', res.val )
+          commit( '_photo_changList', res.val )
         }
       })
 

@@ -1,10 +1,8 @@
 /**
  *  helper page
  */
-import noFind from '@/pages/helper/no-find'
-
 export default {
   path: '*',
   name: 'noFind',
-  component: noFind
+  component: resolve => require(['@/pages/helper/no-find'],resolve)
 }

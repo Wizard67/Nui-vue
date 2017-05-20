@@ -24,7 +24,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  changFavorites( state, value ){
+  _user_changFavorites( state, value ){
     state.list = value
   },
 }
@@ -41,7 +41,7 @@ const actions = {
 
       dispatch( '_global_handleRes', res ).then((res)=>{
         if (res) {
-          commit( 'changFavorites', res.val )
+          commit( '_user_changFavorites', res.val )
         }
       })
       

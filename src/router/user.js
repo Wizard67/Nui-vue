@@ -1,14 +1,6 @@
 /**
  *  user page
  */
-import pageDefault from '@/pages/helper/page-default'
-
-import user from '@/pages/user/user'
-import messages from '@/pages/user/messages'
-import favorites from '@/pages/user/favorites'
-import register from '@/pages/user/register'
-import login from '@/pages/user/login'
-
 export default {
 
   path: '/user/:user(\\d+)?',
@@ -17,7 +9,7 @@ export default {
     auth: true,
     marks: ['中心', 'User']
   },
-  component: pageDefault,
+  component: resolve => require(['@/pages/helper/page-default'],resolve),
   children: [
 
     {
@@ -26,7 +18,7 @@ export default {
       meta: {
         auth: true
       },
-      component: user
+      component: resolve => require(['@/pages/user/user'],resolve),
     },
 
     {
@@ -36,7 +28,7 @@ export default {
         pin: true,
         marks: ['信息', 'Messages']
       },
-      component: messages
+      component: resolve => require(['@/pages/user/messages'],resolve),
     },
 
     {
@@ -46,7 +38,7 @@ export default {
         pin: true,
         marks: ['收藏', 'Favorites']
       },
-      component: favorites
+      component: resolve => require(['@/pages/user/favorites'],resolve),
     },
 
     {
@@ -56,7 +48,7 @@ export default {
         pin: false,
         marks: ['注册', 'Register']
       },
-      component: register
+      component: resolve => require(['@/pages/user/register'],resolve),
     },
 
     {
@@ -66,7 +58,7 @@ export default {
         pin: false,
         marks: ['登录', 'Login']
       },
-      component: login
+      component: resolve => require(['@/pages/user/login'],resolve),
     },
 
     {

@@ -100,9 +100,7 @@
 
       _steps_default(){
         let sid = this.$route.params.steps
-        console.log(this.$store.dispatch( '_steps_default', sid ))
         this.$store.dispatch( '_steps_default', sid ).then((res)=>{
-          console.log(res)
           this.title = res.title
           this.iskeep = Number(res.iskeep)
         })

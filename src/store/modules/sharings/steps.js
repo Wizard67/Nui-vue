@@ -23,7 +23,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  changList( state, value ){
+  _steps_changList( state, value ){
     state.list = value
   }
 
@@ -42,7 +42,7 @@ const actions = {
 
       dispatch( '_global_handleRes', res ).then((res)=>{
         if (res) {
-          commit( 'changList', res.val )
+          commit( '_steps_changList', res.val )
         }
       })
 

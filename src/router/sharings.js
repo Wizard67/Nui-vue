@@ -1,15 +1,6 @@
 /**
  *  sharings page
  */
-import pageDefault from '@/pages/helper/page-default'
-
-import sharings from '@/pages/sharings/sharings'
-import sharingsCreates from '@/pages/sharings/sharings-creates'
-
-import steps from '@/pages/sharings/steps/steps'
-import stepsCreates from '@/pages/sharings/steps/steps-creates'
-import stepsComments from '@/pages/sharings/steps/steps-comments'
-
 export default {
 
   path: '/sharings/:sharings(\\d+)?',
@@ -17,13 +8,13 @@ export default {
     pin: true,
     marks: ['分享', 'Sharings']
   },
-  component: pageDefault,
+  component: resolve => require(['@/pages/helper/page-default'],resolve),
   children: [
 
     {
       path: '',
       name: 'sharings',
-      component: sharings
+      component: resolve => require(['@/pages/sharings/sharings'],resolve)
     },
 
     {
@@ -33,7 +24,7 @@ export default {
         pin: true,
         marks: ['创建', 'Creates']
       },
-      component: sharingsCreates
+      component: resolve => require(['@/pages/sharings/sharings-creates'],resolve)
     },
 
     { 
@@ -42,13 +33,13 @@ export default {
         pin: false,
         marks: ['步骤', 'Steps']
       },
-      component: pageDefault,
+      component: resolve => require(['@/pages/helper/page-default'],resolve),
       children: [
 
         {
           path: '',
           name: 'steps',
-          component: steps            
+          component: resolve => require(['@/pages/sharings/steps/steps'],resolve),
         },
 
         {
@@ -58,7 +49,7 @@ export default {
             pin: true,
             marks: ['新增', 'Creates']
           },
-          component: stepsCreates
+          component: resolve => require(['@/pages/sharings/steps/steps-creates'],resolve),
         },
 
         {
@@ -68,7 +59,7 @@ export default {
             pin: false,
             marks: ['评论', 'Comments']
           },
-          component: stepsComments
+          component: resolve => require(['@/pages/sharings/steps/steps-comments'],resolve),
         }
       ]
     }

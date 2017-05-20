@@ -31,7 +31,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  changInf( state, value ){
+  _user_changInf( state, value ){
     state.inf = value
   },
   /**
@@ -39,7 +39,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  changActive( state, value ){
+  _user_changActive( state, value ){
     state.active = value
   }
 }
@@ -62,13 +62,13 @@ const actions = {
 
       dispatch( '_global_handleRes', res[0] ).then((res)=>{
         if (res) {
-          commit( 'changInf', res.val )
+          commit( '_user_changInf', res.val )
         }
       })
 
       dispatch( '_global_handleRes', res[1] ).then((res)=>{
         if (res) {
-          commit( 'changActive', res.val )
+          commit( '_user_changActive', res.val )
         }
       })
     })

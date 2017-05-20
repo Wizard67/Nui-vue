@@ -27,7 +27,7 @@ const mutations = {
    * @param  {Array} state
    * @param  {Array} value
    */
-  changList( state, value ){
+  _sharings_changList( state, value ){
     state.list = value
   }
 }
@@ -39,19 +39,22 @@ const actions = {
    * @param  {Function} options.commit
    * @param  {Number} page
    */
-  _sharings_getSharings( {dispatch, commit}, page){
+  _sharings_getSharings( {dispatch, commit, state}, page){
+    
+    if (state.list.length === 0 ) {
 
-    // 发送 ajax 请求
-    $ajax.get( `get/sharings/${page}` ).then((res) => {
+      // 发送 ajax 请求
+      $ajax.get( `get/sharings/${page}` ).then((res) => {
 
-      dispatch( '_global_handleRes', res ).then((res)=>{
-        if (res) {
-          console.log(res.val)
-          commit( 'changList', res.val )
-        }
-      })
+        dispatch( '_global_handleRes', res ).then((res)=>{
+          if (res) {
+            commit( '_sharings_changList', res.val )
+          }
+        })
 
-    })
+      })  
+    }
+
   }
 }
 

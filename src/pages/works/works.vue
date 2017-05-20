@@ -1,16 +1,16 @@
 <template>
   <article>
-    <panelWorks
-      v-for="(item,key) in data"
-      :wid="item.wid"
-      :cover="item.cover"
-      :uid="item.uid"
-      :avatar="item.avatar"
-      :hearts="item.hearts"
-      :built="item.built"
-      :key="item.wid">
-    </panelWorks>
-    <nLoadmore v-show="busy"></nLoadmore>
+      <panelWorks
+        v-for="(item,key) in data"
+        :wid="item.wid"
+        :cover="item.cover"
+        :uid="item.uid"
+        :avatar="item.avatar"
+        :hearts="item.hearts"
+        :built="item.built"
+        :key="item.wid">
+      </panelWorks>
+      <nLoadmore v-show="busy"></nLoadmore>
   </article>
 
 </template>
@@ -48,7 +48,7 @@
     },
     created(){
       const page = (this.$route.params.works)?this.$route.params.works:1
-      this.$store.dispatch( '_sharings_getWorks', page )
+      this.$store.dispatch( '_works_getWorks', page )
     }
   }
 </script>
