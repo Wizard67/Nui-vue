@@ -6,6 +6,9 @@ import $store from '@/store'
 
 // 设置默认路径
 axios.defaults.baseURL = 'http://localhost/index.php'
+// axios.defaults.baseURL = 'https://www.wizard67.com/index.php'
+// axios.defaults.baseURL = '/index.php'
+
 // 设置报头
 axios.defaults.headers = {
   'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'

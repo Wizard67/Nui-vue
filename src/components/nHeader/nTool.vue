@@ -21,7 +21,7 @@
 
       <!-- login -->
       <template v-if="this.route === 'login'">
-        <li><p>用户登录</p></li>
+        <li><p>测试阶段，可直接登录</p></li>
         <li>
           <button type="button" class="shadow-btn" @click="_login_toRegister">注册</button>
         </li>       
@@ -63,6 +63,11 @@
       <!-- works -->
       <template v-if="this.route === 'works'">
         <li><p>作品列表</p></li>      
+      </template>
+
+      <!-- works -->
+      <template v-if="this.route === 'tools'">
+        <li><p>测试页面</p></li>      
       </template>
 
     </ul>

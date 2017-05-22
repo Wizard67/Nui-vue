@@ -30,8 +30,8 @@
   export default {
     data(){
       return {
-        account: '',
-        password: ''
+        account: 'test@test.com',
+        password: 'test5690211'
       }
     },
     methods: {

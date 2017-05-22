@@ -15,7 +15,7 @@
       </li>
       <li class="flex-hang">
         <nIcons :type="'hearts'">{{ hearts }}</nIcons>
-        <nIcons :type="'date'">{{ built | formatDate }}</nIcons>
+<!--         <nIcons :type="'date'">{{ built | formatDate }}</nIcons> -->
       </li>
     </ul>
   </div>

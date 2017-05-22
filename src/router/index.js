@@ -11,17 +11,20 @@ import user from './user'
 // import home from './home'
 import sharings from './sharings'
 import works from './works'
+import tools from './tools'
 
 let routes = [
+  { path: '/', redirect: { name: 'sharings' } },
   user,
   sharings,
   works,
+  tools,
   // home,
   noFind
 ]
 
 const Routers = new Router({
-  mode: 'history',
+  mode: 'hash',
   linkActiveClass: 'router-on',
   routes: routes,
   // scrollBehavior (to, from, savedPosition) {
@@ -43,7 +46,7 @@ Routers.beforeEach((to, from, next) => {
       localStorage.avatar = '/static/default.jpg'
       localStorage.token = ''
 
-      location.href = '/sharings'
+      location.href = '/'
       // 跳转首页
       // next({
       //   name: 'home'

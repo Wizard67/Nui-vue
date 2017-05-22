@@ -32,7 +32,7 @@
               ><i class="fa fa-eye"></i></button>
     </ul>
     <hr>
-    <textarea spellcheck="false" placeholder="仅为测试,目前已关闭 markdown 语法支持" 
+    <textarea spellcheck="false" placeholder="仅为测试,支持 markdown 语法" 
               ref="editor"
               v-model="value"
               v-debounceInput="input">
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-  import marked from './marked'
+  import marked from '@/plugins/marked/marked'
 
   export default {
     name: 'Editor',

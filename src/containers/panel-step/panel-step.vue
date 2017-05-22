@@ -13,8 +13,7 @@
             link />
         </li>
         <li>
-          <nContent>
-            {{ content }}
+          <nContent v-html="$options.filters.marked(content)">
           </nContent>
         </li>
         <li class="flex-end-hang-padding">
@@ -31,6 +30,7 @@
   import nUsers from '@/components/nUsers'
   import nContent from '@/components/nContent'
   import nIcons from '@/components/nIcons'
+  import marked from '@/plugins/marked/marked'
 
   export default {
     name: 'panel-step',
@@ -53,6 +53,11 @@
       nUsers,
       nContent,
       nIcons
+    },
+    filters: {
+      marked(value){
+        return marked(value)
+      }
     }
   }
 </script>

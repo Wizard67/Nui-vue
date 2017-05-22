@@ -16,6 +16,7 @@ Vue.use(VueLazyload, {
   filter: {
     webp ({ src }) {
       if ( src === 'undefined') return
+      if ( src.indexOf('static') >= 0) return src
       const imgCdn = 'https://image.wizard67.com/'
       if ( src !== '/static/pictures/sharing.jpg') {
         return imgCdn+src
@@ -28,6 +29,9 @@ Vue.use(VueLazyload, {
 
 import infiniteScroll from 'vue-infinite-scroll'
 Vue.use(infiniteScroll)
+
+import VueThreejs from './plugins/threejs'
+Vue.use(VueThreejs)
 
 Vue.config.productionTip = false
 

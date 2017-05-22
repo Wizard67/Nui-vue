@@ -1,7 +1,7 @@
 <template>
   <router-link v-if="link"
               :to="{ name:target, params:{[target]: id} }"
-              v-lazy="src"
+              :src="src | pic"
               class="cover pointer"
               tag="img"/>
   <img v-else
@@ -28,6 +28,16 @@
       type: Number,
       dafault: NaN
      }
+    },
+    filters: {
+      pic(src){
+        const imgCdn = 'https://image.wizard67.com/'
+        if ( src.indexOf('static') >= 0) {
+          return src
+        }else{
+          return imgCdn+src
+        }
+      }
     }
   }
 </script>

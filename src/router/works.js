@@ -1,11 +1,6 @@
 /**
  *  works page
  */
-import pageDefault from '@/pages/helper/page-default'
-
-import works from '@/pages/works/works'
-import release from '@/pages/works/release'
-import photo from '@/pages/works/photo'
 
 export default {
 

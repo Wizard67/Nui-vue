@@ -10,7 +10,8 @@
         </li>
         <li>
           <nContent>
-            <img :src="`https://image.wizard67.com/${data.cover}`">
+            <!-- <img :src="`https://image.wizard67.com/${data.cover}`"> -->
+            <img :src="data.photo">
           </nContent>
         </li>
         <li class="flex-end-hang-padding">
@@ -38,8 +39,8 @@
       }
     },
     created(){
-      const wid = (this.$route.params.works)?this.$route.params.works:1
-      this.$store.dispatch( '_photo_getPhoto', wid )
+
+      this.$store.dispatch( '_photo_getPhoto', this.$route.params.photo )
     }
   }
 </script>
