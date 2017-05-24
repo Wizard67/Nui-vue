@@ -5,8 +5,8 @@ import $store from '@/store'
 // axios配置
 
 // 设置默认路径
-axios.defaults.baseURL = 'http://localhost/index.php'
-// axios.defaults.baseURL = 'https://www.wizard67.com/index.php'
+// axios.defaults.baseURL = 'http://localhost/index.php'
+axios.defaults.baseURL = 'https://www.wizard67.com/index.php'
 // axios.defaults.baseURL = '/index.php'
 
 // 设置报头
