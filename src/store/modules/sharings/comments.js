@@ -8,7 +8,7 @@ const state = [
       // 用户编号
       uid: 1,
       // 用户头像
-      avatar: require('@/assets/pictures/user4.jpg'),
+      // avatar: require('@/assets/pictures/user4.jpg'),
       // 用户名
       username: '张三',
       // 用户介绍

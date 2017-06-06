@@ -17,8 +17,8 @@ export default {
    * 用户头像信息
    * @type {String}
    */
-  avatar: localStorage.avatar || '/static/default.jpg',
-
+  // avatar: localStorage.avatar || process.env.NODE_ENV === 'production'?'/demo/nui-vue/static/default.jpg':'/static/default.jpg',
+  avatar: localStorage.avatar,
   /**
    * 用户发布作品数
    * @type {Number}

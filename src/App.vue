@@ -38,5 +38,4 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/font-awesome.css"></style>
 <style src="@/assets/css/nui-sass/NUI.scss" lang="sass"></style>

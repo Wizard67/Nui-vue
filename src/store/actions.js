@@ -60,7 +60,8 @@ export default {
       
     let base64 = value.substring(value.indexOf(',')+1)
 
-    const action = 'http://upload-z2.qiniu.com/putb64/-1'
+    const action = 'https://upload.qbox.me/putb64/-1'
+    // const action = 'http://upload-z2.qiniu.com/putb64/-1'
     const getToken = $ajax.get( 'get/getQnToken')
 
     return new Promise ((resolve, reject) => {

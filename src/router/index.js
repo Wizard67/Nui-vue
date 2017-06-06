@@ -43,10 +43,10 @@ Routers.beforeEach((to, from, next) => {
       localStorage.uid = ''
       localStorage.rank = ''
       localStorage.username = ''
-      localStorage.avatar = '/static/default.jpg'
+      localStorage.avatar = './static/default.jpg'
       localStorage.token = ''
 
-      location.href = '/'
+      location.href = './'
       // 跳转首页
       // next({
       //   name: 'home'

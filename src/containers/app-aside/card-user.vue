@@ -1,7 +1,7 @@
 <template>
   <div class="card-user">
     <router-link :to="{ name: 'user'}" class="shadow-btn">
-      <img class="avatar" :src="avatar">
+      <img class="avatar" :src="avatar" :style="'background:url(./static/default.jpg)'">
     </router-link>
     <ul class="flex-around">
       <li class="flex-column-center">
